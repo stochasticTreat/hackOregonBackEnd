@@ -3,11 +3,9 @@ drop table if exists direction_codes;
 create table direction_codes (
 sub_type varchar,
 direction varchar(7)
-)
+);
 
 copy direction_codes from '/Users/samhiggins2001_worldperks/prog/hack_oregon/moneyDirectionCodes.txt' with (format csv, delimiter E'\t');
-select * from direction_codes;
-
 
 drop table if exists working_trasactions;
 create table working_trasactions
