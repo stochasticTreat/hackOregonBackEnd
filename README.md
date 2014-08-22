@@ -56,29 +56,31 @@ All interaction with the vagrant virtual machine (VM) containing the Hack Oregon
 To log on to the vagrant VM: 
 From a new command prompt/terminal window, navigate to the directory where vagrant is installed. 
 enter:
+
 	host machine prompt > vagrant ssh
+	
 This will put you into the guest machine (the Hack Oregon back end). 
 To log out of the guest machine and return to the host, press 'control + d'
 
 To turn off the back end server/vagrant machine, from the back end folder, host machine prompt, enter:
 
-host machine prompt> vagrant halt
+	host machine prompt> vagrant halt
 
 To turn the server back on, enter:
 
-host machine prompt> vagrant up
+	host machine prompt> vagrant up
 
 Sometimes when the vagrant the nginx server will stop running when vagrant is stopped/started. If this happens, the nginx server may need to be restarted. Use this command to restart the nginx server after logging in to the hack oregon server:
 
-guest machine prompt> sudo /usr/local/openresty/nginx/sbin/nginx 
+	guest machine prompt> sudo /usr/local/openresty/nginx/sbin/nginx 
 
 or, if that gives error:
 
-guest machine prompt> sudo /usr/local/openresty/nginx/sbin/nginx -s reload
+	guest machine prompt> sudo /usr/local/openresty/nginx/sbin/nginx -s reload
 
 To check if the nginx server is running, you can use this command:
 
-guest machine prompt> ps aux | grep nginx
+	guest machine prompt> ps aux | grep nginx
 
 If all is working this will show three lines of output. If only one line is seen, the nginx server is not running.
 
@@ -88,7 +90,7 @@ The nginx error log can be found here, in the VM:
 
 If I want to look at it, I generally run:
 
-guest machine prompt> sudo cp /usr/local/openresty/nginx/logs/error.log /vagrant/nginx.error.log
+	guest machine prompt> sudo cp /usr/local/openresty/nginx/logs/error.log /vagrant/nginx.error.log
 
 This will copy the error log to the installation folder, so that I can view the log with my favorite txt editor. 
 
