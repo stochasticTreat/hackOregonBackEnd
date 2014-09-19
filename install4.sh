@@ -11,10 +11,30 @@ sudo mv ./sources.list.tmp /etc/apt/sources.list
 rm ./sources.list.appendme
 
 sudo apt-get update
-sudo apt-get install r-base
-sudo apt-get install r-base-dev
+sudo apt-get -y install r-base
+sudo apt-get -y install r-base-dev
 
 #create a R library for the user:
 echo R_LIBS_USER=\"~/lib/R/library\" > ~/.Renviron
 mkdir ~/lib/R/library
-sudo cp /vagrant/Rprofile .Rprofile
+sudo cp ./Rprofile .Rprofile
+
+#install java so that some r packages will work.
+#https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get
+
+#installing the needed development kit
+#for xls import
+sudo apt-get -y install default-jdk
+
+#node scraper installation
+
+sudo apt-get -y install nodejs
+sudo apt-get -y install 
+sudo apt-get install -y npm
+
+sudo ./buildScraper.sh
+# cd orestar_scrape
+# sudo npm install 
+# cd orestar_scrape_committees
+# sudo npm install
+

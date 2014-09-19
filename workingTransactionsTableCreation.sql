@@ -1,14 +1,14 @@
 ﻿
-drop table if exists direction_codes;
+/*drop table if exists direction_codes;
 create table direction_codes (
 sub_type varchar,
 direction varchar(7)
 );
 
 copy direction_codes from '/Users/samhiggins2001_worldperks/prog/hack_oregon/moneyDirectionCodes.txt' with (format csv, delimiter E'\t');
-
-drop table if exists working_trasactions;
-create table working_trasactions
+*/
+drop table if exists working_transactions;
+create table working_transactions
 	as (
 		select tran_id, tran_date, filer, contributor_payee, rct.sub_type, amount, 
 		contributor_payee_committee_id, filer_id, purp_desc, book_type, addr_line1, 

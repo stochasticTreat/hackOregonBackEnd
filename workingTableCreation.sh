@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+echo "Running workingTableCreation.sh"
+echo "Working directory:"
+pwd
+#this file must be found in and run from ~/data_infrastructure/
+cd ~/data_infrastructure
+echo "calling addDirectionCodes.sh"
+sudo ./addDirectionCodes.sh 
+echo "making db call to add the working_transactions table"
+sudo -u postgres psql hackoregon < ./workingTransactionsTableCreation.sql
+echo "calling makeWorkingCandidateFilings.R"
+sudo ./makeWorkingCandidateFilings.R

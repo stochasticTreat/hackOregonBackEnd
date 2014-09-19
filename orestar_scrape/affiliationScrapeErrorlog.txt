@@ -1,0 +1,600 @@
+2014-09-16 14:58:42   committee download file: raw_committee_data/4831.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 14:58:42   committee download file: raw_committee_data/16808.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 14:58:42   committee download file: raw_committee_data/15994.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 14:58:42   committee download file: raw_committee_data/16491.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 14:58:42   committee download file: raw_committee_data/4586.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 14:58:42   committee download file: raw_committee_data/12047.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 14:58:42   committee download file: raw_committee_data/13649.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 14:58:42   committee download file: raw_committee_data/15406.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 14:58:42   committee download file: raw_committee_data/15500.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 14:58:42   committee download file: raw_committee_data/16213.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 14:58:42   committee download file: raw_committee_data/14377.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 14:58:42   committee download file: raw_committee_data/16528.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 14:58:42   committee download file: raw_committee_data/325.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 14:58:42   committee download file: raw_committee_data/10367.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 14:58:42   committee download file: raw_committee_data/16566.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 14:58:43   committee download file: raw_committee_data/14280.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 14:58:43   committee download file: raw_committee_data/16708.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 14:58:43   committee download file: raw_committee_data/16652.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 14:58:43   committee download file: raw_committee_data/16258.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 14:58:43   committee download file: raw_committee_data/16384.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:08:02    
+ The scraper failed to download data for the committee, 16384 
+
+2014-09-16 15:11:17    
+ running command '/Users/samhiggins2001_worldperks/local/bin/node scraper 4831' had status 8
+2014-09-16 15:11:17    
+ running command '/Users/samhiggins2001_worldperks/local/bin/node scraper 16808' had status 8
+2014-09-16 15:11:17    
+ running command '/Users/samhiggins2001_worldperks/local/bin/node scraper 15994' had status 8
+2014-09-16 15:11:17    
+ running command '/Users/samhiggins2001_worldperks/local/bin/node scraper 16491' had status 8
+2014-09-16 15:11:17    
+ running command '/Users/samhiggins2001_worldperks/local/bin/node scraper 4586' had status 8
+2014-09-16 15:11:17    
+ running command '/Users/samhiggins2001_worldperks/local/bin/node scraper 12047' had status 8
+2014-09-16 15:11:17    
+ running command '/Users/samhiggins2001_worldperks/local/bin/node scraper 13649' had status 8
+2014-09-16 15:11:17    
+ running command '/Users/samhiggins2001_worldperks/local/bin/node scraper 15406' had status 8
+2014-09-16 15:11:17    
+ running command '/Users/samhiggins2001_worldperks/local/bin/node scraper 15500' had status 8
+2014-09-16 15:11:17    
+ running command '/Users/samhiggins2001_worldperks/local/bin/node scraper 16213' had status 8
+2014-09-16 15:11:17    
+ running command '/Users/samhiggins2001_worldperks/local/bin/node scraper 14377' had status 8
+2014-09-16 15:11:17    
+ running command '/Users/samhiggins2001_worldperks/local/bin/node scraper 16528' had status 8
+2014-09-16 15:11:17    
+ running command '/Users/samhiggins2001_worldperks/local/bin/node scraper 325' had status 8
+2014-09-16 15:11:17    
+ running command '/Users/samhiggins2001_worldperks/local/bin/node scraper 10367' had status 8
+2014-09-16 15:11:17    
+ running command '/Users/samhiggins2001_worldperks/local/bin/node scraper 16566' had status 8
+2014-09-16 15:11:17    
+ running command '/Users/samhiggins2001_worldperks/local/bin/node scraper 14280' had status 8
+2014-09-16 15:11:17    
+ running command '/Users/samhiggins2001_worldperks/local/bin/node scraper 16708' had status 8
+2014-09-16 15:11:17    
+ running command '/Users/samhiggins2001_worldperks/local/bin/node scraper 16652' had status 8
+2014-09-16 15:11:17    
+ running command '/Users/samhiggins2001_worldperks/local/bin/node scraper 16258' had status 8
+2014-09-16 15:11:17    
+ running command '/Users/samhiggins2001_worldperks/local/bin/node scraper 16384' had status 8
+2014-09-16 15:25:30   4831 
+ No committee data returned for committee
+2014-09-16 15:45:38    
+ The scraper failed to download data for the committee, 4831 
+
+2014-09-16 15:45:38    
+ The scraper failed to download data for the committee, 16808 
+
+2014-09-16 15:45:38    
+ The scraper failed to download data for the committee, 15994 
+
+2014-09-16 15:45:38    
+ The scraper failed to download data for the committee, 16491 
+
+2014-09-16 15:45:38    
+ The scraper failed to download data for the committee, 4586 
+
+2014-09-16 15:45:38    
+ The scraper failed to download data for the committee, 12047 
+
+2014-09-16 15:45:38    
+ The scraper failed to download data for the committee, 13649 
+
+2014-09-16 15:45:38    
+ The scraper failed to download data for the committee, 15406 
+
+2014-09-16 15:45:38    
+ The scraper failed to download data for the committee, 15500 
+
+2014-09-16 15:45:38    
+ The scraper failed to download data for the committee, 16213 
+
+2014-09-16 15:45:38    
+ The scraper failed to download data for the committee, 14377 
+
+2014-09-16 15:45:38    
+ The scraper failed to download data for the committee, 16528 
+
+2014-09-16 15:45:38    
+ The scraper failed to download data for the committee, 325 
+
+2014-09-16 15:45:38    
+ The scraper failed to download data for the committee, 10367 
+
+2014-09-16 15:45:38    
+ The scraper failed to download data for the committee, 16566 
+
+2014-09-16 15:45:38    
+ The scraper failed to download data for the committee, 14280 
+
+2014-09-16 15:45:38    
+ The scraper failed to download data for the committee, 16708 
+
+2014-09-16 15:45:38    
+ The scraper failed to download data for the committee, 16652 
+
+2014-09-16 15:45:38    
+ The scraper failed to download data for the committee, 16258 
+
+2014-09-16 15:45:38    
+ The scraper failed to download data for the committee, 16384 
+
+2014-09-16 15:55:53   committee download file: raw_committee_data/4831.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:55:53   committee download file: raw_committee_data/16808.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:55:53   committee download file: raw_committee_data/15994.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:55:53   committee download file: raw_committee_data/16491.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:55:53   committee download file: raw_committee_data/4586.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:55:53   committee download file: raw_committee_data/12047.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:55:53   committee download file: raw_committee_data/13649.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:55:53   committee download file: raw_committee_data/15406.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:55:53   committee download file: raw_committee_data/15500.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:55:53   committee download file: raw_committee_data/16213.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:55:53   committee download file: raw_committee_data/14377.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:55:53   committee download file: raw_committee_data/16528.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:55:53   committee download file: raw_committee_data/325.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:55:53   committee download file: raw_committee_data/10367.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:55:53   committee download file: raw_committee_data/16566.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:55:53   committee download file: raw_committee_data/14280.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:55:53   committee download file: raw_committee_data/16708.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:55:53   committee download file: raw_committee_data/16652.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:55:54   committee download file: raw_committee_data/16258.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:55:54   committee download file: raw_committee_data/16384.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:56:33   committee download file: raw_committee_data/4831.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:56:33   committee download file: raw_committee_data/16808.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:56:33   committee download file: raw_committee_data/15994.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:56:33   committee download file: raw_committee_data/16491.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:56:33   committee download file: raw_committee_data/4586.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:56:33   committee download file: raw_committee_data/12047.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:56:33   committee download file: raw_committee_data/13649.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:56:33   committee download file: raw_committee_data/15406.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:56:33   committee download file: raw_committee_data/15500.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:56:33   committee download file: raw_committee_data/16213.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:56:33   committee download file: raw_committee_data/14377.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:56:33   committee download file: raw_committee_data/16528.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:56:33   committee download file: raw_committee_data/325.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:56:33   committee download file: raw_committee_data/10367.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:56:33   committee download file: raw_committee_data/16566.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:56:33   committee download file: raw_committee_data/14280.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:56:33   committee download file: raw_committee_data/16708.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:56:33   committee download file: raw_committee_data/16652.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:56:33   committee download file: raw_committee_data/16258.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:56:33   committee download file: raw_committee_data/16384.txt 
+ Error in fromJSON(json_str = gsr3) : unexpected character 'x'
+
+
+2014-09-16 15:58:37    
+ The scraper failed to download data for the committee, 4831 
+
+2014-09-16 15:58:37    
+ The scraper failed to download data for the committee, 16808 
+
+2014-09-16 15:58:37    
+ The scraper failed to download data for the committee, 15994 
+
+2014-09-16 15:58:37    
+ The scraper failed to download data for the committee, 16491 
+
+2014-09-16 15:58:37    
+ The scraper failed to download data for the committee, 4586 
+
+2014-09-16 15:58:37    
+ The scraper failed to download data for the committee, 12047 
+
+2014-09-16 15:58:37    
+ The scraper failed to download data for the committee, 13649 
+
+2014-09-16 15:58:37    
+ The scraper failed to download data for the committee, 15406 
+
+2014-09-16 15:58:37    
+ The scraper failed to download data for the committee, 15500 
+
+2014-09-16 15:58:37    
+ The scraper failed to download data for the committee, 16213 
+
+2014-09-16 15:58:37    
+ The scraper failed to download data for the committee, 14377 
+
+2014-09-16 15:58:37    
+ The scraper failed to download data for the committee, 16528 
+
+2014-09-16 15:58:37    
+ The scraper failed to download data for the committee, 325 
+
+2014-09-16 15:58:37    
+ The scraper failed to download data for the committee, 10367 
+
+2014-09-16 15:58:37    
+ The scraper failed to download data for the committee, 16566 
+
+2014-09-16 15:58:37    
+ The scraper failed to download data for the committee, 14280 
+
+2014-09-16 15:58:37    
+ The scraper failed to download data for the committee, 16708 
+
+2014-09-16 15:58:37    
+ The scraper failed to download data for the committee, 16652 
+
+2014-09-16 15:58:38    
+ The scraper failed to download data for the committee, 16258 
+
+2014-09-16 15:58:38    
+ The scraper failed to download data for the committee, 16384 
+
+2014-09-16 16:00:03    
+ The scraper failed to download data for the committee, 4831 
+
+2014-09-16 16:00:03    
+ The scraper failed to download data for the committee, 16808 
+
+2014-09-16 16:00:03    
+ The scraper failed to download data for the committee, 15994 
+
+2014-09-16 16:00:03    
+ The scraper failed to download data for the committee, 16491 
+
+2014-09-16 16:00:03    
+ The scraper failed to download data for the committee, 4586 
+
+2014-09-16 16:00:03    
+ The scraper failed to download data for the committee, 12047 
+
+2014-09-16 16:00:03    
+ The scraper failed to download data for the committee, 13649 
+
+2014-09-16 16:00:03    
+ The scraper failed to download data for the committee, 15406 
+
+2014-09-16 16:00:03    
+ The scraper failed to download data for the committee, 15500 
+
+2014-09-16 16:00:03    
+ The scraper failed to download data for the committee, 16213 
+
+2014-09-16 16:00:03    
+ The scraper failed to download data for the committee, 14377 
+
+2014-09-16 16:00:03    
+ The scraper failed to download data for the committee, 16528 
+
+2014-09-16 16:00:03    
+ The scraper failed to download data for the committee, 325 
+
+2014-09-16 16:00:03    
+ The scraper failed to download data for the committee, 10367 
+
+2014-09-16 16:00:03    
+ The scraper failed to download data for the committee, 16566 
+
+2014-09-16 16:00:03    
+ The scraper failed to download data for the committee, 14280 
+
+2014-09-16 16:00:03    
+ The scraper failed to download data for the committee, 16708 
+
+2014-09-16 16:00:03    
+ The scraper failed to download data for the committee, 16652 
+
+2014-09-16 16:00:03    
+ The scraper failed to download data for the committee, 16258 
+
+2014-09-16 16:00:03    
+ The scraper failed to download data for the committee, 16384 
+
+2014-09-16 16:00:23    
+ The scraper failed to download data for the committee, 4831 
+
+2014-09-16 16:00:23    
+ The scraper failed to download data for the committee, 16808 
+
+2014-09-16 16:00:24    
+ The scraper failed to download data for the committee, 15994 
+
+2014-09-16 16:00:24    
+ The scraper failed to download data for the committee, 16491 
+
+2014-09-16 16:00:24    
+ The scraper failed to download data for the committee, 4586 
+
+2014-09-16 16:00:24    
+ The scraper failed to download data for the committee, 12047 
+
+2014-09-16 16:00:24    
+ The scraper failed to download data for the committee, 13649 
+
+2014-09-16 16:00:24    
+ The scraper failed to download data for the committee, 15406 
+
+2014-09-16 16:00:24    
+ The scraper failed to download data for the committee, 15500 
+
+2014-09-16 16:00:24    
+ The scraper failed to download data for the committee, 16213 
+
+2014-09-16 16:00:24    
+ The scraper failed to download data for the committee, 14377 
+
+2014-09-16 16:00:24    
+ The scraper failed to download data for the committee, 16528 
+
+2014-09-16 16:00:24    
+ The scraper failed to download data for the committee, 325 
+
+2014-09-16 16:00:24    
+ The scraper failed to download data for the committee, 10367 
+
+2014-09-16 16:00:24    
+ The scraper failed to download data for the committee, 16566 
+
+2014-09-16 16:00:24    
+ The scraper failed to download data for the committee, 14280 
+
+2014-09-16 16:00:24    
+ The scraper failed to download data for the committee, 16708 
+
+2014-09-16 16:00:24    
+ The scraper failed to download data for the committee, 16652 
+
+2014-09-16 16:00:24    
+ The scraper failed to download data for the committee, 16258 
+
+2014-09-16 16:00:24    
+ The scraper failed to download data for the committee, 16384 
+
+2014-09-16 16:01:08    
+ The scraper failed to download data for the committee, 14377 
+
+2014-09-16 16:03:52    
+ Errors found in committee data import, see error log: affiliationScrapeErrorlog.txt
+2014-09-16 16:03:52    
+ The scraper failed to download data for the committee, 4831 
+
+2014-09-16 16:03:52    
+ The scraper failed to download data for the committee, 16808 
+
+2014-09-16 16:03:52    
+ The scraper failed to download data for the committee, 15994 
+
+2014-09-16 16:06:44    
+ Warnings found in committee data import, see error log: affiliationScrapeErrorlog.txt
+2014-09-16 16:06:44    
+ Errors found in committee data import, see error log: affiliationScrapeErrorlog.txt
+2014-09-16 16:06:44    
+ Errors found in committee data import, see error log: affiliationScrapeErrorlog.txt
+2014-09-16 16:06:44    
+ Errors found in committee data import, see error log: affiliationScrapeErrorlog.txt
+2014-09-16 16:10:38    
+ The scraper failed to download data for the committee, 16491 
+
+2014-09-16 16:10:38    
+ The scraper failed to download data for the committee, 4586 
+
+2014-09-16 16:10:38    
+ The scraper failed to download data for the committee, 12047 
+
+2014-09-16 16:10:38    
+ The scraper failed to download data for the committee, 13649 
+
+2014-09-16 16:10:39    
+ The scraper failed to download data for the committee, 15406 
+
+2014-09-16 16:10:39    
+ The scraper failed to download data for the committee, 15500 
+
+2014-09-16 16:10:39    
+ The scraper failed to download data for the committee, 16213 
+
+2014-09-16 16:10:39    
+ The scraper failed to download data for the committee, 14377 
+
+2014-09-16 16:10:39    
+ The scraper failed to download data for the committee, 16528 
+
+2014-09-16 16:10:39    
+ The scraper failed to download data for the committee, 325 
+
+2014-09-16 16:10:39    
+ The scraper failed to download data for the committee, 10367 
+
+2014-09-16 16:10:39    
+ The scraper failed to download data for the committee, 16566 
+
+2014-09-16 16:10:39    
+ The scraper failed to download data for the committee, 14280 
+
+2014-09-16 16:10:39    
+ The scraper failed to download data for the committee, 16708 
+
+2014-09-16 16:10:39    
+ The scraper failed to download data for the committee, 16652 
+
+2014-09-16 16:10:39    
+ The scraper failed to download data for the committee, 16258 
+
+2014-09-16 16:10:39    
+ The scraper failed to download data for the committee, 16384 
+
+2014-09-16 16:18:36    
+ Warnings found in committee data import, see error log: affiliationScrapeErrorlog.txt

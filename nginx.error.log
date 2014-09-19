@@ -1,0 +1,368 @@
+NOTICE:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_top_committee_data('NULL', '','4','') as row;
+2014/08/02 19:53:50 [error] 1488#0: *1 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_top_committee_data(unknown, unknown, unknown, unknown) does not exist
+LINE 1: ...son(array_agg(row_to_json(row, true)), true) FROM http.get_t...
+                                                             ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_top_committee_data('NULL', '','4','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 14 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/top_committee_data/4/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+2014/08/02 19:53:50 [error] 1488#0: *3 open() "/usr/local/openresty/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.0.2.2, server: , request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+2014/08/02 19:53:50 [error] 1488#0: *3 open() "/usr/local/openresty/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.0.2.2, server: , request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+2014/08/19 02:09:09 [notice] 2001#0: signal process started
+2014/08/19 02:09:38 [error] 2007#0: *1 open() "/usr/local/openresty/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.0.2.2, server: , request: "GET /favicon.ico HTTP/1.1", host: "127.0.0.1:8080"
+2014/08/19 02:09:38 [error] 2007#0: *1 open() "/usr/local/openresty/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.0.2.2, server: , request: "GET /favicon.ico HTTP/1.1", host: "127.0.0.1:8080"
+NOTICE:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_top_committee_data('NULL', '','4','') as row;
+2014/08/19 02:10:13 [error] 2007#0: *2 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_top_committee_data(unknown, unknown, unknown, unknown) does not exist
+LINE 1: ...son(array_agg(row_to_json(row, true)), true) FROM http.get_t...
+                                                             ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_top_committee_data('NULL', '','4','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 14 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/top_committee_data/4/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+2014/08/19 02:10:13 [error] 2007#0: *4 open() "/usr/local/openresty/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.0.2.2, server: , request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+2014/08/19 02:10:13 [error] 2007#0: *4 open() "/usr/local/openresty/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.0.2.2, server: , request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+NOTICE:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_top_committee_data('NULL', '','4') as row;
+2014/08/19 02:10:22 [error] 2007#0: *4 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_top_committee_data(unknown, unknown, unknown) does not exist
+LINE 1: ...son(array_agg(row_to_json(row, true)), true) FROM http.get_t...
+                                                             ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_top_committee_data('NULL', '','4') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 14 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/top_committee_data/4 HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_args('NULL', '','4','') as row;
+2014/08/19 02:12:41 [error] 2007#0: *6 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function row_to_json(text, boolean) does not exist
+LINE 1: SELECT array_to_json(array_agg(row_to_json(row, true)), true...
+                                       ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_args('NULL', '','4','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 14 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/args/4/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_campaign_detail('NULL', '','4','') as row;
+NOTICE:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_top_committee_data('NULL', '','4','') as row;
+2014/08/22 18:55:39 [error] 2007#0: *10 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_top_committee_data(unknown, unknown, unknown, unknown) does not exist
+LINE 1: ...son(array_agg(row_to_json(row, true)), true) FROM http.get_t...
+                                                             ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_top_committee_data('NULL', '','4','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 14 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/top_committee_data/4/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+2014/08/22 18:55:39 [error] 2007#0: *11 open() "/usr/local/openresty/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.0.2.2, server: , request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+2014/08/22 18:55:39 [error] 2007#0: *11 open() "/usr/local/openresty/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.0.2.2, server: , request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+2014/08/22 18:55:55 [emerg] 10061#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2014/08/22 18:55:55 [emerg] 10061#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2014/08/22 18:55:55 [emerg] 10061#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2014/08/22 18:55:55 [emerg] 10061#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2014/08/22 18:55:55 [emerg] 10061#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2014/08/22 18:55:55 [emerg] 10061#0: still could not bind()
+2014/08/22 18:56:18 [notice] 10065#0: signal process started
+NOTICE:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_top_committee_data('NULL', '','4','') as row;
+2014/08/22 18:56:25 [error] 10066#0: *12 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_top_committee_data(unknown, unknown, unknown, unknown) does not exist
+LINE 1: ...son(array_agg(row_to_json(row, true)), true) FROM http.get_t...
+                                                             ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_top_committee_data('NULL', '','4','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 14 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/top_committee_data/4/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_top_committee_data('NULL', '','4','') as row;
+2014/08/22 18:56:26 [error] 10066#0: *14 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_top_committee_data(unknown, unknown, unknown, unknown) does not exist
+LINE 1: ...son(array_agg(row_to_json(row, true)), true) FROM http.get_t...
+                                                             ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_top_committee_data('NULL', '','4','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 14 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/top_committee_data/4/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_args('NULL', '','4','') as row;
+2014/08/22 18:57:16 [error] 10066#0: *16 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function row_to_json(text, boolean) does not exist
+LINE 1: SELECT array_to_json(array_agg(row_to_json(row, true)), true...
+                                       ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_args('NULL', '','4','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 14 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/args/4/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_args('NULL', '','4','') as row;
+2014/08/22 18:57:18 [error] 10066#0: *18 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function row_to_json(text, boolean) does not exist
+LINE 1: SELECT array_to_json(array_agg(row_to_json(row, true)), true...
+                                       ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_args('NULL', '','4','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 14 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/args/4/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_top_committee_data('NULL', '','4','') as row;
+2014/08/22 20:32:18 [error] 1476#0: *1 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_top_committee_data(unknown, unknown, unknown, unknown) does not exist
+LINE 1: ...son(array_agg(row_to_json(row, true)), true) FROM http.get_t...
+                                                             ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_top_committee_data('NULL', '','4','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 14 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/top_committee_data/4/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+2014/08/22 20:33:39 [notice] 1508#0: signal process started
+NOTICE:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_top_committee_data('NULL', '','4','') as row;
+2014/08/22 20:33:43 [error] 1509#0: *3 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_top_committee_data(unknown, unknown, unknown, unknown) does not exist
+LINE 1: ...son(array_agg(row_to_json(row, true)), true) FROM http.get_t...
+                                                             ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_top_committee_data('NULL', '','4','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 14 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/top_committee_data/4/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_args('NULL', '','4','') as row;
+2014/08/22 20:33:57 [error] 1509#0: *5 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function row_to_json(text, boolean) does not exist
+LINE 1: SELECT array_to_json(array_agg(row_to_json(row, true)), true...
+                                       ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT array_to_json(array_agg(row_to_json(row, true)), true) FROM http.get_args('NULL', '','4','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 14 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/args/4/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+2014/08/22 20:36:02 [notice] 1530#0: signal process started
+NOTICE:  SELECT * FROM http.get_top_committee_data('NULL', '','4','') as row;
+2014/08/22 20:37:40 [error] 1481#0: *1 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  relation "campaign_detail" does not exist
+LINE 4:     FROM campaign_detail
+                 ^
+QUERY:  SELECT array_to_json(array_agg(row_to_json(qres, true)), true)
+  FROM 
+    (SELECT *
+    FROM campaign_detail
+    ORDER BY total DESC
+    LIMIT numRec::int) qres
+CONTEXT:  PL/pgSQL function http.get_top_committee_data(text,text,text,text) line 6 at SQL statement
+SQL statement "SELECT * FROM http.get_top_committee_data('NULL', '','4','') as row;"
+PL/pgSQL function http.get(text,text,text,text) line 14 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/top_committee_data/4/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_top_committee_data('NULL', '','4','') as row;
+2014/08/22 20:37:42 [error] 1481#0: *3 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  relation "campaign_detail" does not exist
+LINE 4:     FROM campaign_detail
+                 ^
+QUERY:  SELECT array_to_json(array_agg(row_to_json(qres, true)), true)
+  FROM 
+    (SELECT *
+    FROM campaign_detail
+    ORDER BY total DESC
+    LIMIT numRec::int) qres
+CONTEXT:  PL/pgSQL function http.get_top_committee_data(text,text,text,text) line 6 at SQL statement
+SQL statement "SELECT * FROM http.get_top_committee_data('NULL', '','4','') as row;"
+PL/pgSQL function http.get(text,text,text,text) line 14 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/top_committee_data/4/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_top_committee_data('NULL', '','4','') as row;
+NOTICE:  SELECT * FROM http.get_trasaction_data('NULL', '','10907','') as row;
+2014/08/23 00:13:41 [error] 1516#0: *4 open() "/usr/local/openresty/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.0.2.2, server: , request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_blah('NULL', '','') as row;
+2014/08/23 00:13:45 [error] 1516#0: *4 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_blah(unknown, unknown, unknown) does not exist
+LINE 1: SELECT * FROM http.get_blah('NULL', '','') as row;
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT * FROM http.get_blah('NULL', '','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 14 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/blah/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_trasaction_data('NULL', '','10907','') as row;
+NOTICE:  SELECT * FROM http.get_trasaction_data('NULL', '','10907','') as row;
+NOTICE:  SELECT * FROM http.get_trasaction_data('NULL', '','10907','') as row;
+NOTICE:  SELECT * FROM http.get_trasaction_data('NULL', '','10907','') as row;
+NOTICE:  SELECT * FROM http.get_committee_data('NULL', '','10907','') as row;
+NOTICE:  SELECT * FROM http.get_top_committee_data('NULL', '','2','') as row;
+NOTICE:  SELECT * FROM http.get_top_committee_data('NULL', '','7','') as row;
+NOTICE:  SELECT * FROM http.get_top_committee_data('NULL', '','4','') as row;
+NOTICE:  SELECT * FROM http.get_trasaction_data('NULL', '','10907','') as row;
+2014/08/23 00:19:34 [notice] 2360#0: signal process started
+NOTICE:  SELECT * FROM http.get_trasaction_data('NULL', '','10907','') as row;
+NOTICE:  SELECT * FROM http.get_trasaction_data('NULL', '','"10907"','') as row;
+2014/08/23 00:19:45 [error] 2361#0: *9 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  invalid input syntax for integer: ""10907""
+CONTEXT:  SQL function "get_trasaction_data" statement 1
+SQL statement "SELECT * FROM http.get_trasaction_data('NULL', '','"10907"','') as row;"
+PL/pgSQL function http.get(text,text,text,text) line 14 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/trasaction_data/%2210907%22/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_trasaction_data('NULL', '','10907','') as row;
+NOTICE:  SELECT * FROM http.get_top_committee_data('NULL', '','4','') as row;
+2014/08/23 21:43:51 [error] 2361#0: *13 open() "/usr/local/openresty/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.0.2.2, server: , request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_trasactions('NULL', '','4','') as row;
+2014/08/23 21:43:55 [error] 2361#0: *13 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_trasactions(unknown, unknown, unknown, unknown) does not exist
+LINE 1: SELECT * FROM http.get_trasactions('NULL', '','4','') as row...
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT * FROM http.get_trasactions('NULL', '','4','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 16 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/trasactions/4/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_trasactions('NULL', '','4','') as row;
+2014/08/23 21:47:10 [error] 2361#0: *14 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_trasactions(unknown, unknown, unknown, unknown) does not exist
+LINE 1: SELECT * FROM http.get_trasactions('NULL', '','4','') as row...
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT * FROM http.get_trasactions('NULL', '','4','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 16 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/trasactions/4/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_trasactions('NULL', '','4','') as row;
+2014/08/23 21:47:15 [error] 2361#0: *16 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_trasactions(unknown, unknown, unknown, unknown) does not exist
+LINE 1: SELECT * FROM http.get_trasactions('NULL', '','4','') as row...
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT * FROM http.get_trasactions('NULL', '','4','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 16 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/trasactions/4/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_trasactions('NULL', '','4','') as row;
+2014/08/23 21:47:17 [error] 2361#0: *18 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_trasactions(unknown, unknown, unknown, unknown) does not exist
+LINE 1: SELECT * FROM http.get_trasactions('NULL', '','4','') as row...
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT * FROM http.get_trasactions('NULL', '','4','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 16 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/trasactions/4/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_trasactions('NULL', '','blah','') as row;
+2014/08/23 21:48:12 [error] 2361#0: *20 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_trasactions(unknown, unknown, unknown, unknown) does not exist
+LINE 1: SELECT * FROM http.get_trasactions('NULL', '','blah','') as ...
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT * FROM http.get_trasactions('NULL', '','blah','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 16 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/trasactions/blah/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_transactions('NULL', '','blah','') as row;
+NOTICE:  SELECT * FROM http.get_one_committee('NULL', '','blank','') as row;
+2014/08/24 19:58:57 [error] 2361#0: *24 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_one_committee(unknown, unknown, unknown, unknown) does not exist
+LINE 1: SELECT * FROM http.get_one_committee('NULL', '','blank','') ...
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT * FROM http.get_one_committee('NULL', '','blank','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 16 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/one_committee/blank/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+2014/08/24 19:58:57 [error] 2361#0: *25 open() "/usr/local/openresty/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.0.2.2, server: , request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_transactions('NULL', '','blank','') as row;
+NOTICE:  SELECT * FROM http.get_trasaction_data('NULL', '','10907','') as row;
+2014/08/24 20:12:49 [error] 2361#0: *27 open() "/usr/local/openresty/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.0.2.2, server: , request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_trasactions('NULL', '','10907','') as row;
+2014/08/24 20:12:54 [error] 2361#0: *27 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_trasactions(unknown, unknown, unknown, unknown) does not exist
+LINE 1: SELECT * FROM http.get_trasactions('NULL', '','10907','') as...
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT * FROM http.get_trasactions('NULL', '','10907','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 16 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/trasactions/10907/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_trasaction_data('NULL', '','10907','') as row;
+NOTICE:  SELECT * FROM http.get_transactions('NULL', '','10907','') as row;
+NOTICE:  SELECT * FROM http.get_transactions('NULL', '','2752','') as row;
+2014/08/24 22:09:46 [error] 2361#0: *30 open() "/usr/local/openresty/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.0.2.2, server: , request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_trasaction_data('NULL', '','10907','') as row;
+NOTICE:  SELECT * FROM http.get_trasactions('NULL', '','10907','') as row;
+2014/08/24 22:09:57 [error] 2361#0: *30 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_trasactions(unknown, unknown, unknown, unknown) does not exist
+LINE 1: SELECT * FROM http.get_trasactions('NULL', '','10907','') as...
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT * FROM http.get_trasactions('NULL', '','10907','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 16 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/trasactions/10907/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_transactions('NULL', '','10907','') as row;
+NOTICE:  SELECT * FROM http.get_current_transactions('NULL', '','10907','') as row;
+2014/08/24 22:11:03 [error] 2361#0: *31 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_current_transactions(unknown, unknown, unknown, unknown) does not exist
+LINE 1: SELECT * FROM http.get_current_transactions('NULL', '','1090...
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT * FROM http.get_current_transactions('NULL', '','10907','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 16 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/current_transactions/10907/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_current_transactions('NULL', '','2752','') as row;
+2014/08/24 22:11:17 [error] 2361#0: *33 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_current_transactions(unknown, unknown, unknown, unknown) does not exist
+LINE 1: SELECT * FROM http.get_current_transactions('NULL', '','2752...
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT * FROM http.get_current_transactions('NULL', '','2752','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 16 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/current_transactions/2752/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_current_transactions('NULL', '','2752','') as row;
+2014/08/24 22:11:34 [error] 2361#0: *35 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_current_transactions(unknown, unknown, unknown, unknown) does not exist
+LINE 1: SELECT * FROM http.get_current_transactions('NULL', '','2752...
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT * FROM http.get_current_transactions('NULL', '','2752','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 16 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/current_transactions/2752/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_current_transactions('NULL', '','2752','') as row;
+2014/08/24 22:11:37 [error] 2361#0: *37 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_current_transactions(unknown, unknown, unknown, unknown) does not exist
+LINE 1: SELECT * FROM http.get_current_transactions('NULL', '','2752...
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT * FROM http.get_current_transactions('NULL', '','2752','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 16 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/current_transactions/2752/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_current_transactions('NULL', '','2752','') as row;
+NOTICE:  SELECT * FROM http.get_trasaction_data('NULL', '','10907','') as row;
+2014/08/24 22:33:54 [error] 2361#0: *41 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_trasaction_data(unknown, unknown, unknown, unknown) does not exist
+LINE 1: SELECT * FROM http.get_trasaction_data('NULL', '','10907',''...
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT * FROM http.get_trasaction_data('NULL', '','10907','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 16 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/trasaction_data/10907/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_one_committee('NULL', '','blank','') as row;
+2014/08/25 05:01:33 [error] 2361#0: *42 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_one_committee(unknown, unknown, unknown, unknown) does not exist
+LINE 1: SELECT * FROM http.get_one_committee('NULL', '','blank','') ...
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT * FROM http.get_one_committee('NULL', '','blank','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 16 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/one_committee/blank/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+2014/08/25 05:01:34 [error] 2361#0: *44 open() "/usr/local/openresty/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.0.2.2, server: , request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_committee_map('NULL', '','blnk','') as row;
+2014/08/25 05:01:39 [error] 2361#0: *44 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  column "committee_name" does not exist
+LINE 3:     (SELECT candidate_name, committee_name, filer_id
+                                    ^
+QUERY:  SELECT array_to_json(array_agg(row_to_json(qres, true)), true)
+  FROM 
+    (SELECT candidate_name, committee_name, filer_id
+    FROM campaign_detail) qres
+CONTEXT:  PL/pgSQL function http.get_committee_map(text,text,text,text) line 6 at SQL statement
+SQL statement "SELECT * FROM http.get_committee_map('NULL', '','blnk','') as row;"
+PL/pgSQL function http.get(text,text,text,text) line 16 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/committee_map/blnk/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_committee_map('NULL', '','blnk','') as row;
+2014/09/04 16:57:15 [error] 2361#0: *48 open() "/usr/local/openresty/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.0.2.2, server: , request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+2014/09/04 16:57:15 [error] 2361#0: *48 open() "/usr/local/openresty/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.0.2.2, server: , request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_trasaction_data('NULL', '','10907','') as row;
+2014/09/04 16:57:21 [error] 2361#0: *48 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function http.get_trasaction_data(unknown, unknown, unknown, unknown) does not exist
+LINE 1: SELECT * FROM http.get_trasaction_data('NULL', '','10907',''...
+                      ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT * FROM http.get_trasaction_data('NULL', '','10907','') as row;
+CONTEXT:  PL/pgSQL function http.get(text,text,text,text) line 16 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/trasaction_data/10907/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_candidate_search('NULL', '','bill','') as row;
+2014/09/04 16:57:30 [error] 2361#0: *49 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function dmetaphone(text) does not exist
+LINE 5:   where dmetaphone( candidate_name ) ilike '%'||dmetaphone( ...
+                ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT array_to_json(array_agg(row_to_json(qres, true)), true)
+  FROM 
+    (
+  select * from campaign_detail
+  where dmetaphone( candidate_name ) ilike '%'||dmetaphone( 'bill' )||'%'
+    ) qres
+CONTEXT:  PL/pgSQL function http.get_candidate_search(text,text,text,text) line 6 at SQL statement
+SQL statement "SELECT * FROM http.get_candidate_search('NULL', '','bill','') as row;"
+PL/pgSQL function http.get(text,text,text,text) line 16 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/candidate_search/bill/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_top_committee_data('NULL', '','4','') as row;
+NOTICE:  SELECT * FROM http.get_candidate_search('NULL', '','bill','') as row;
+2014/09/04 18:11:05 [error] 2361#0: *51 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function dmetaphone(text) does not exist
+LINE 5:   where dmetaphone( candidate_name ) ilike '%'||dmetaphone( ...
+                ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT array_to_json(array_agg(row_to_json(qres, true)), true)
+  FROM 
+    (
+  select * from campaign_detail
+  where dmetaphone( candidate_name ) ilike '%'||dmetaphone( 'bill' )||'%'
+    ) qres
+CONTEXT:  PL/pgSQL function http.get_candidate_search(text,text,text,text) line 6 at SQL statement
+SQL statement "SELECT * FROM http.get_candidate_search('NULL', '','bill','') as row;"
+PL/pgSQL function http.get(text,text,text,text) line 16 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/candidate_search/bill/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
+NOTICE:  SELECT * FROM http.get_candidate_search('NULL', '','bill','') as row;
+2014/09/04 18:11:38 [error] 2361#0: *53 postgres: failed to receive result: PGRES_FATAL_ERROR: ERROR:  function dmetaphone(text) does not exist
+LINE 5:   where dmetaphone( candidate_name ) ilike '%'||dmetaphone( ...
+                ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+QUERY:  SELECT array_to_json(array_agg(row_to_json(qres, true)), true)
+  FROM 
+    (
+  select * from campaign_detail
+  where dmetaphone( candidate_name ) ilike '%'||dmetaphone( 'bill' )||'%'
+    ) qres
+CONTEXT:  PL/pgSQL function http.get_candidate_search(text,text,text,text) line 6 at SQL statement
+SQL statement "SELECT * FROM http.get_candidate_search('NULL', '','bill','') as row;"
+PL/pgSQL function http.get(text,text,text,text) line 16 at EXECUTE statement
+ while waiting for result from PostgreSQL database, client: 10.0.2.2, server: , request: "GET /hackoregon/http/candidate_search/bill/ HTTP/1.1", upstream: "postgres://127.0.0.1:5432", host: "localhost:8080"
