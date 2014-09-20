@@ -17,7 +17,7 @@ sudo apt-get -y install r-base-dev
 #create a R library for the user:
 echo R_LIBS_USER=\"~/lib/R/library\" > ~/.Renviron
 mkdir ~/lib/R/library
-sudo cp ./Rprofile .Rprofile
+sudo cp ./Rprofile ~/.Rprofile
 
 #install java so that some r packages will work.
 #https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get
