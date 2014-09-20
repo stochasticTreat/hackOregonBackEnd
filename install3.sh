@@ -12,7 +12,7 @@ sudo mkdir ~/data_infrastructure
 
 sudo cp ./hackoregon.sql.bz2 ~/data_infrastructure/hackoregon.sql.bz2
 
-sudo ./buildoutFromGitRepo.sh
+sudo ./buildOutFromGitRepo.sh
 
 cd ~
 cwd=$(pwd)
