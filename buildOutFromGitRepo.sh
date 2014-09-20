@@ -25,12 +25,14 @@ sudo chmod 777 workingTableCreation.sh
 sudo chmod 777 makeWorkingCandidateFilings.R
 sudo chmod 777 endpoints/makeGrassState.R
 sudo chmod 777 postSchemaInstallationEndpoints.sh
+
 #core raw database files
 sudo cp -v ./trimTransactionsTable.sql ~/data_infrastructure/trimTransactionsTable.sql
 sudo cp -v ./install.sql ~/data_infrastructure/install.sql
 
 #control script
 sudo cp -v ./buildOutDBFromRawTables.sh ~/data_infrastructure/buildOutDBFromRawTables.sh
+sudo cp -v ./.Rprofile ~/.Rprofile
 
 #scraper infrastructure
 sudo cp -avr ./endpoints ~/data_infrastructure/endpoints 
