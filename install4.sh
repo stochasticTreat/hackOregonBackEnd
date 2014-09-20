@@ -38,3 +38,4 @@ sudo ./buildScraper.sh
 # cd orestar_scrape_committees
 # sudo npm install
 
+sudo ./buildOutDBFromRawTables.sh

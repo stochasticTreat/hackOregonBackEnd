@@ -35,5 +35,4 @@ sudo -u postgres createlang plpgsql
 
 sudo -u postgres psql -c "alter user postgres password 'points';"
 
-sudo ./buildOutDBFromRawTables.sh
 
