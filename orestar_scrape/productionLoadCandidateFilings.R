@@ -6,7 +6,7 @@
 cat("\nInside productionLoadCandidateFilings.R\n")
 
 if(!require("stringr")){
-	install.packages("stringr")
+	install.packages("stringr", repos="http://ftp.osuosl.org/pub/cran/")
 	library("stringr")
 }
 

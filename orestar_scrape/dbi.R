@@ -1,12 +1,12 @@
 #dbi
 
 if(!require("RPostgreSQL")){
-	install.packages("RPostgreSQL")
+	install.packages("RPostgreSQL", repos="http://ftp.osuosl.org/pub/cran/")
 	library("RPostgreSQL")
 }
 
 if(!require("DBI")){
-	install.packages("DBI")
+	install.packages("DBI", repos="http://ftp.osuosl.org/pub/cran/")
 	library("DBI")
 }
 

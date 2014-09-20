@@ -1,7 +1,7 @@
 
 source('./dbi.R')
 if(!require(plyr)){
-	install.packages(plyr)
+	install.packages(plyr, repos="http://ftp.osuosl.org/pub/cran/")
 	library(plyr)
 }
 

@@ -8,23 +8,23 @@ cat("Working directory:\n",getwd(),"\n")
 # }
 
 if(!require("R.utils")){
-	install.packages("R.utils")
+	install.packages("R.utils", repos="http://ftp.osuosl.org/pub/cran/")
 	library("R.utils")
 }
 if(!require("xlsx")){
-	install.packages("xlsx")
+	install.packages("xlsx", repos="http://ftp.osuosl.org/pub/cran/")
 	library("xlsx")
 }
 if(!require("dplyr")){
-	install.packages("dplyr")
+	install.packages("dplyr", repos="http://ftp.osuosl.org/pub/cran/")
 	library("dplyr")
 }
 if(!require("ggplot2")){
-	install.packages("ggplot2")
+	install.packages("ggplot2", repos="http://ftp.osuosl.org/pub/cran/")
 	library("ggplot2")
 }
 if(!require("DBI")){
-	install.packages("DBI")
+	install.packages("DBI", repos="http://ftp.osuosl.org/pub/cran/")
 	library("DBI")
 }
 
