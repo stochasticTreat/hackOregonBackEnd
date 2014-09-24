@@ -1,9 +1,40 @@
 
 source('./dbi.R')
-if(!require(plyr)){
-	install.packages(plyr, repos="http://ftp.osuosl.org/pub/cran/")
-	library(plyr)
+if(!require("plyr")){
+	install.packages("plyr", repos="http://ftp.osuosl.org/pub/cran/")
+	library("plyr")
 }
+
+if(!require("rjson")){
+	install.packages("rjson", repos="http://ftp.osuosl.org/pub/cran/")
+	library("rjson")
+}
+
+ERRORLOGFILENAME="affiliationScrapeErrorlog.txt"
+
+
+# committeefolder = "raw_committee_data"
+# dbname = "hack_oregon"
+# comTabName = "raw_committees_scraped"
+bulkLoadScrapedCommitteeData<-function(committeefolder, dbname, comTabName){
+	allfiles = dir(committeefolder)
+	scrapeFiles = allfiles[grepl(pattern="^[0-9]+(.txt)$", x=allfiles)]
+	if(length(scrapeFiles)){
+		comids = as.integer(gsub(pattern=".txt$", replacement="", x=scrapeFiles))
+		cat("Found",length(comids)," download files with likely committee IDs.\n")
+		rawScrapeDat = rawScrapeToTable(committeeNumbers=comids, rawdir=committeefolder, 
+																		attemptRetry=F, 
+																		moveErrantScrapes=T)
+		cat("Loaded scrape data for",nrow(rawScrapeDat),"committees.\n")
+		sendCommitteesToDb( comtab=rawScrapeDat, dbname=dbname, comTabName=comTabName )
+		updateWorkingCommitteesTableWithScraped(dbname=dbname)
+	}else{
+		if(!file.exists(committeefolder)) dir.create(committeefolder)
+		message("No scraped committee files found in folder\n'",committeefolder,"'")
+	}
+	cat("\n..\n")
+}
+
 
 ccidsInComms<-function(){
 	q = "select distinct \"Committee_Id\" from comms where \"Committee_Type\" = 'CC'"
@@ -139,8 +170,6 @@ rmWhiteSpace<-function(strin){
 	return(strout)
 }
 
-
-
 tabulateRecs<-function(lout){
 	
 	ukeys = c()
@@ -150,16 +179,16 @@ tabulateRecs<-function(lout){
 		ukeys = c(ukeys, names(cur))
 	}
 	ukeys=unique(ukeys)
-	omat = matrix(nrow=length(lout), ncol=length(ukeys), dimnames=list(names(lout),ukeys))
+	omat = matrix(nrow=length(lout), ncol=length(ukeys), dimnames= list( names(lout), ukeys ))
 	for(i in names(lout)){
 		cur = lout[[i]]
 		omat[i,names(cur)] = cur
-		
 	}
+	omat[,"ID"] = gsub(pattern="[^0-9]", replacement="", x=omat[,"ID"])
 	return(omat)
 }
 
-scrapeTheseCommittees<-function(committeeNumbers, commfold = "raw_committee_data",forceRedownload=F){
+scrapeTheseCommittees<-function(committeeNumbers, commfold = "raw_committee_data", forceRedownload=F){
 	
 	if( !file.exists(commfold) ) dir.create(path=commfold)
 	
@@ -214,7 +243,56 @@ vectorFromRecord<-function(sres){
 	recordVector = flattenList(jsl2=cleanList)
 }
 
-rawScrapeToTable<-function(committeeNumbers, rawdir=""){
+
+addScrapedToWorkingCommitteesTable<-function(dbname){
+	
+	q1="insert into working_committees
+			(select id as committee_id, committee_name, 
+			committee_type, pac_type as committee_subtype, 
+			party_affiliation, election_office, candidate_name, 
+			candidate_email_address, candidate_work_phone_home_phone_fax, 
+			candidate_address, treasurer_name, treasurer_work_phone_home_phone_fax, 
+			treasurer_mailing_address
+			from raw_committees_scraped);"
+	dbCall(sql=q1, dbname=dbname)
+}
+
+updateWorkingCommitteesTableWithScraped<-function(dbname){
+	
+
+	q0 = "delete from working_committees where committee_id in 
+	(select id from raw_committees_scraped)"
+	dbCall(sql=q0, dbname=dbname)
+	
+	q1="insert into working_committees
+	(select id as committee_id, committee_name, 
+	committee_type, pac_type as committee_subtype, 
+	party_affiliation, election_office, candidate_name, 
+	candidate_email_address, candidate_work_phone_home_phone_fax, 
+	candidate_address, treasurer_name, treasurer_work_phone_home_phone_fax, 
+	treasurer_mailing_address
+	from raw_committees_scraped);"
+	dbCall(sql=q1, dbname=dbname)
+}
+
+fillMissingWorkingCommitteesTableWithScraped<-function(dbname){
+	
+	q1="insert into working_committees
+	(select id as committee_id, committee_name, 
+	committee_type, pac_type as committee_subtype, 
+	party_affiliation, election_office, candidate_name, 
+	candidate_email_address, candidate_work_phone_home_phone_fax, 
+	candidate_address, treasurer_name, 
+	treasurer_work_phone_home_phone_fax, 
+	treasurer_mailing_address
+	from raw_committees_scraped
+	where id not in (select distinct committee_id from working_committees);"
+	dbCall(sql=q1, dbname=dbname)
+	
+}
+
+
+rawScrapeToTable<-function(committeeNumbers, rawdir="", attemptRetry=T, moveErrantScrapes=T){
 
 	lout = list()
 	notDownloaded = c()
@@ -227,35 +305,67 @@ rawScrapeToTable<-function(committeeNumbers, rawdir=""){
 			if( !grepl(pattern="Committee", x=r2[1], ignore.case=TRUE) ){#r2[1]=="x"){ #if the scraper did not find anything, x will be returned. 
 				logError(err=paste("The scraper failed to download data for the committee,",cn,"\n"))
 				notDownloaded = c(notDownloaded, cn)
+				cat("Error in import, 'Committee' not found. See",ERRORLOGFILENAME,"..")
 			}else{
 				recvec = try(expr=vectorFromRecord(sres=r2), silent=TRUE)
-				if(grepl(pattern="error", x=class(recvec))){
-					cat("error in import, see",ERRORLOGFILENAME,"..")
+				if( grepl(pattern="error", x=class(recvec)) ){
 					logError(err=recvec, additionalData=paste("committee download file:",comfile) )
+					cat("Error in conversion of record to JSON, see",ERRORLOGFILENAME,"..")
 				}else{
 					lout[[as.character(cn)]] = recvec
 				}
 			}
 		}else{
-			cat("..comm id not found:",cn,"..")
+			notDownloaded = c(notDownloaded, cn)
+			message("..comm id not found by rawScrapeToTable() function!!:",cn,"..\n")
+			warning("..comm id not found by rawScrapeToTable() function!!:",cn,"..\n")
 		}
 	}
-
+	notDownloaded = unique(notDownloaded)
 	rectab = tabulateRecs(lout=lout)
 	
-	if(length(notDownloaded)){
+	if( length(notDownloaded)&attemptRetry ){
 		cat("\n\nData for these committees was not correctly downloaded on the first attempt:\n", 
 				paste(notDownloaded, collapse=", "),
 				"\nTrying again..\n")
 		scrapeTheseCommittees(committeeNumbers=notDownloaded, commfold="raw_committee_data", forceRedownload=TRUE)
 		logWarnings(warnings())
-		rectab2 = rawScrapeToTable(committeeNumbers=notDownloaded, rawdir="raw_committee_data")
+		rectab2 = rawScrapeToTable(committeeNumbers=notDownloaded, rawdir="raw_committee_data", attemptRetry=F, moveErrantScrapes=F)
 		rectab = rbind.fill.matrix(rectab, rectab2)
 	}
+	
+	if(moveErrantScrapes) moveErrantScrapesFun(rectab=rectab, rawdir=rawdir)
+	
 	rectab = unique(rectab)
 	
 	return(rectab)
 	
+}
+
+moveErrantScrapesFun<-function(rectab, rawdir){
+	cat("\nDimensions of raw committee data from scrape:\n", dim(rectab), "\n")
+	#determine which of the committeeNumbers cannot be found in the
+	#rectab but can be found as dl file names
+
+	#get the committee numbers from the file names
+	allfnms = dir(rawdir)
+	comfnms = allfnms[grep(pattern=".txt$", x=allfnms)]
+	committeeNumbers = as.integer(gsub(pattern=".txt$",replacement="", x=comfnms))
+	
+	notInrectab = setdiff(committeeNumbers, as.integer(rectab[,"ID"]) )
+	
+	if(length(notInrectab)){
+		cat("\nThe import failed for these committees:\n")
+		print(notInrectab)
+		toMove = notInrectab[file.exists(paste0(rawdir,"/" ,notInrectab, ".txt"))]
+		if(length(toMove)){
+			cat("\nThese corresponding files will be moved to the failedScrapes folder:\n")
+			print(paste0(rawdir,"/",toMove,".txt"))
+			dir.create(paste0(rawdir,"/failedScrapes/"), showWarnings=FALSE)
+			for(fi in toMove) file.rename(to=paste0(rawdir,"/failedScrapes/",fi,".txt"), 
+																					 from=paste0(rawdir,"/",fi,".txt") )
+		}
+	}
 }
 
 logError<-function(err,additionalData=""){
@@ -268,6 +378,7 @@ logError<-function(err,additionalData=""){
 							col.names=FALSE, 
 							row.names=FALSE, 
 							quote=FALSE)
+	cat("\nError log written to file '",ERRORLOGFILENAME,"'\n")
 }
 
 # 

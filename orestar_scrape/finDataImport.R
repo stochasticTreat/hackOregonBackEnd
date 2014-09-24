@@ -1,11 +1,6 @@
 #finDataImport.R
-cat("\nInside finDataImport.R\n")
+cat("\nLoading finDataImport.R .. \n")
 cat("Working directory:\n",getwd(),"\n")
-
-# if(!require("gdata")){
-# 	install.packages("gdata")
-# 	library("gdata")
-# }
 
 if(!require("R.utils")){
 	install.packages("R.utils", repos="http://ftp.osuosl.org/pub/cran/")
@@ -15,10 +10,7 @@ if(!require("xlsx")){
 	install.packages("xlsx", repos="http://ftp.osuosl.org/pub/cran/")
 	library("xlsx")
 }
-if(!require("dplyr")){
-	install.packages("dplyr", repos="http://ftp.osuosl.org/pub/cran/")
-	library("dplyr")
-}
+
 if(!require("ggplot2")){
 	install.packages("ggplot2", repos="http://ftp.osuosl.org/pub/cran/")
 	library("ggplot2")
@@ -28,7 +20,12 @@ if(!require("DBI")){
 	library("DBI")
 }
 
-source("./dbi.R")
+if(basename(getwd())=="orestar_scrape"){
+	source("./dbi.R")
+}else{
+	source("./orestar_scrape/dbi.R")
+}
+
 
 bulkImportTransactions<-function(fname, dbname="hackoregon", tablename="raw_committee_transactions"){
 	#open the table
@@ -36,11 +33,11 @@ bulkImportTransactions<-function(fname, dbname="hackoregon", tablename="raw_comm
 	#adjust column data types
 	#add to database
 	#check duplicates
-	importTransactionsTableToDb(tab=fintab, tableName=tablename)
-	
+	importTransactionsTableToDb(tab=fintab, tableName=tablename, dbname=dbname)
+	cat("\nChecking if the import was successfull..\n")
 	#test read
 	dbTableExists(tableName=tablename, dbname=dbname)
-	#move the input file to the /loadedTransactions folder
+	#move the input file to the /loadedTransactions folder?
 	
 }
 
@@ -114,40 +111,40 @@ debug.importAllXLSFiles<-function(){
 	
 }
 
-run.importAllXLSFiles<-function(){
-	 
-	importAllXLSFiles(indir="../orestar/comms/", remEscapes=T,
-										forceImport=T, 
-										remQuotes=T)
-	comms = mergeTxtFiles(folderName="../orestar/comms/RecordsConvertedToTxt")
-	
-	commfname="../orestar/comms/RecordsConvertedToTxt/joinedTables.tsv"
-	fixTextFiles(fnames=commfname)
-	#now send it to the database
-	fileToDb(tableName="comms", dbname="contributions", fname=commfname, delim="\t")
-	
-	
-	importAllXLSFiles(indir="../orestar/fins/", 
-										remEscapes=T,
-										forceImport=T, 
-										remQuotes=T)
-	
-	fins = mergeTxtFiles(folderName="../orestar/fins/RecordsConvertedToTxt")
-	finfname="../orestar/fins/RecordsConvertedToTxt/joinedTables.tsv"
-	
-	tab = readFinData(fname=finfname)
-	tab = fixTextFiles(tab=tab)
-	cat("Fixing columns\n")
-	tab = fixColumns(tab=tab)
-	
-	cat("Re-writing file\n")
-	write.finance.txt(dat=tab, fname=finfname)
-	# 	fileToDb(tableName="fins", dbname="contributions", fname=finfname, delim="\t")
-	safeWrite(tab=tab, tableName="fins", dbname="contributions")
-}
+# run.importAllXLSFiles<-function(){
+# 	 
+# 	importAllXLSFiles(indir="../orestar/comms/", remEscapes=T,
+# 										forceImport=T, 
+# 										remQuotes=T)
+# 	comms = mergeTxtFiles(folderName="../orestar/comms/RecordsConvertedToTxt")
+# 	
+# 	commfname="../orestar/comms/RecordsConvertedToTxt/joinedTables.tsv"
+# 	fixTextFiles(fnames=commfname)
+# 	#now send it to the database
+# 	fileToDb(tableName="comms", dbname="contributions", fname=commfname, delim="\t")
+# 	
+# 	
+# 	importAllXLSFiles(indir="../orestar/fins/", 
+# 										remEscapes=T,
+# 										forceImport=T, 
+# 										remQuotes=T)
+# 	
+# 	fins = mergeTxtFiles(folderName="../orestar/fins/RecordsConvertedToTxt")
+# 	finfname="../orestar/fins/RecordsConvertedToTxt/joinedTables.tsv"
+# 	
+# 	tab = readFinData(fname=finfname)
+# 	tab = fixTextFiles(tab=tab)
+# 	cat("Fixing columns\n")
+# 	tab = fixColumns(tab=tab)
+# 	
+# 	cat("Re-writing file\n")
+# 	write.finance.txt(dat=tab, fname=finfname)
+# 	# 	fileToDb(tableName="fins", dbname="contributions", fname=finfname, delim="\t")
+# 	safeWrite(tab=tab, tableName="fins", dbname="contributions")
+# }
 
 setColumnDataTypesForCommittees<-function(tab){
-	tab$id = makeIntegerColumn(colVals=tab$id, tab=tab)
+	tab$id = makeIntegerColumn(colVals=tab$id, tab=tab, printErrors=F, printErrorValues=T)
 	return(tab)
 }
 
@@ -178,12 +175,25 @@ makeBoolcolumns<-function(tab, boolcols=c("employ_ind","tran_stsfd_ind","self_em
 makeDateColumns<-function(tab){
 	datecols = colnames(tab)[grep(pattern="date", x=colnames(tab))]
 	for(d in datecols){
-		cat("Converting column",d,"to date data type..\n")
-		tab[,d] = as.Date(x=tab[,d], format="%m/%d/%Y")
+		fmt = checkForDateFormat(dcol = tab[,d])
+		cat("Converting column",d,"to date data type using date format",fmt,"..\n")
+		tab[,d] = as.Date(x=tab[,d], format=fmt )
 	}
 	return(tab)
 }
-makeIntegerColumn<-function(colVals, tab){
+
+checkForDateFormat<-function(dcol){
+	
+	fmts = c( "%m/%d/%Y", "%Y/%m/%d", "%y/%m/%d", "%Y-%m-%d", "%m-%d-%Y", "%m/%d/%y", "%m-%d-%y", "%d%b%Y", "%d%b%y" )
+	fmtsScores = c(rep(0,length(fmts)))
+	for(i in 1:length(fmts)){
+		fmtsScores[i] = sum(is.na( as.Date(x=dcol, format=fmts[i])))
+	}
+	winner = fmts[fmtsScores == min(fmtsScores)][1]
+	return(winner)
+}
+
+makeIntegerColumn<-function(colVals, tab, printErrors=T, printErrorValues=F){
 	naIndexes = which(is.na(colVals))
 	if(length(naIndexes)) cat(length(naIndexes),"values found to be 'NA' \n")
 	uam2 = as.integer(colVals)
@@ -191,8 +201,12 @@ makeIntegerColumn<-function(colVals, tab){
 	errorIndexes = setdiff(errorIndexes, naIndexes)
 	#display error indexes
 	if(length(errorIndexes)){
+		
 		cat(length(errorIndexes), "values could not easily be coorsed to integer\n")
-		print(tab[errorIndexes,])	
+		if(printErrors) print(tab[errorIndexes,])	
+		if(printErrorValues) print(colVals[errorIndexes])
+		cat(length(errorIndexes), "values could not easily be coorsed to integer\n")
+	
 	}else{
 		cat("\nColumns transformed to integer data type..\n")
 	}
@@ -369,7 +383,7 @@ orderFilesByDateFileName<-function(){
 	
 }
 
-mergeTxtFiles<-function( folderName="./convertedToTsv/" ){
+mergeTxtFiles<-function( folderName ){
 	
 	folderName = gsub("/$","",folderName)
 	filesWithBlankTranIds = c()

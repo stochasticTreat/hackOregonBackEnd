@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 #scripts to create the working tables and run the data workup
-
-#sudo -u postgres psql hackoregon < ~/gitforks/backend/dataWorkUp.sql
-
+echo "----------------------------------------------"
 echo "Running buildOutDBFromRawTables.sh"
-
+echo "----------------------------------------------"
 sudo ~/data_infrastructure/workingTableCreation.sh
 
 sudo ~/data_infrastructure/buildEndpointTables.sh

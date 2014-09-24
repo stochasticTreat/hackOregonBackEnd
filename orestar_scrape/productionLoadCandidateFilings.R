@@ -96,8 +96,20 @@ getMostRecent<-function(apres, dfcol="party_descr",dateCol="filed_date"){
 }
 
 
-
 makeWorkingCandidateFilings<-function(dbname){
+	candidateFilingsExcelToDb(cfTableName="raw_candidate_filings", 
+														returnTable=FALSE, dbname=dbname)
+	cffdb = dbiRead(query="select * from raw_candidate_filings", dbname=dbname)
+	cat("Dimensions of retreived candidate filings:",dim(cffdb),"\n")
+	cffdb = cffdb[order(cffdb$candidate_file_rsn, decreasing=T),] #these two steps will get the newest for each candidate.
+	wcf = cffdb[!duplicated(x=cffdb$cand_ballot_name_txt),,drop=F]
+	colnames(wcf)<-tolower(colnames(wcf))
+	colnames(wcf)<-gsub(pattern="[.]",replacement="_",x=colnames(wcf))
+	
+	dbiWrite(tabla=wcf, name="working_candidate_filings", dbname=dbname, appendToTable=FALSE)
+}
+
+old_makeWorkingCandidateFilings<-function(dbname){
 	
 	cat("\nMakeWorkingCandidateFilings() searches the working directory\n'",getwd(),
 			"'\nfor a file with the substring 'candidateFilings' in its name,",
@@ -116,7 +128,6 @@ makeWorkingCandidateFilings<-function(dbname){
 												FUN=function(x){
 													paste(paste(apres$filed_date[x], apres$candidate_office[x],sep=", "),collapse="; ")
 												})
-	
 	colnames(all_races)<-c("id","all_races")
 	
 	parties = getMostRecent(apres=apres, dfcol="party_descr")

@@ -7,7 +7,7 @@ getCurrentCycleCCtrasactions<-function(minDate="2012-11-15", numCommittees=10, d
 			where filer_id in 
 				(select filer_id
 					from working_transactions 
-					join raw_committees
+					join working_committees
 					on filer_id = committee_id
 					where tran_date > '",minDate,"'::date
 					and committee_type = 'CC'

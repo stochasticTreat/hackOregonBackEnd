@@ -598,3 +598,1494 @@
 
 2014-09-16 16:18:36    
  Warnings found in committee data import, see error log: affiliationScrapeErrorlog.txt
+2014-09-22 19:35:32   committee download file: raw_committee_data/11528.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/11748.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/12127.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/12452.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/12468.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/12594.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/126.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/12683.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/12688.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/12845.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/12848.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/12891.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/12986.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/13156.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/13163.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/1318.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/13289.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/135.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/13544.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/13571.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/13619.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/13628.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/13635.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/13647.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/13649.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/13774.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/138.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/13873.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/13926.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/13963.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/13966.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/13972.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/13982.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/13983.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/13997.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/13998.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14121.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14148.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14187.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14198.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/142.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14211.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14232.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14243.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14245.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14252.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14253.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14265.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14268.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14295.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14364.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14369.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14377.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14523.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14528.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14575.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14598.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14661.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14679.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14743.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14751.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14931.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/14943.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15125.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15181.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15182.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15192.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15199.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15237.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15242.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15255.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15272.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/153.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15323.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15348.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15351.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15397.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15424.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15469.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15477.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15485.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15492.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15497.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15523.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15553.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15573.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15577.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15584.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15616.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15627.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:32   committee download file: raw_committee_data/15628.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/15633.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/15643.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/15659.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/15728.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/15741.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/15749.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/159.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/161.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/172.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/175.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/191.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/197.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/212.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/2225.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/2278.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/2362.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/245.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/2452.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/247.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/257.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/26.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/2731.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/275.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/2829.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/283.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/293.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/295.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/298.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/299.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/312.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/314.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/315.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/3161.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/318.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/321.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/324.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/325.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/326.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/331.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/332.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/333.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/335.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/3362.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/338.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/339.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/342.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/347.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/348.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/3481.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/349.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/351.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/3591.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/3816.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/39.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/4.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/4155.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/4221.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/4241.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/4311.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/4554.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/4556.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/4583.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/4586.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/4681.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/4741.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/4747.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/4752.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/4831.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/51.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/5585.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/5667.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/5785.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/618.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/622.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/7485.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/8686.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/944.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 19:35:33   committee download file: raw_committee_data/97.txt 
+ Error in convertToJSON(sres = sres) : could not find function "fromJSON"
+
+2014-09-22 21:43:18   committee download file: raw_committee_data/10367.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/11528.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/11748.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/12047.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/12127.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/12452.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/12468.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/12594.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/126.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/12683.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/12688.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/12708.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/12845.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/12848.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/12891.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/12902.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/12940.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/12986.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/130.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13130.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13156.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13163.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/1318.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13289.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13408.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/135.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13544.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13571.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13619.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13628.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13635.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13647.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13649.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13774.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/138.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13873.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13907.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13920.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13926.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13940.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13963.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13966.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13972.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13982.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13983.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13997.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/13998.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14035.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14041.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14044.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14046.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14052.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14072.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14121.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14148.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14187.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14198.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/142.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14201.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14211.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14232.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14243.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14245.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14252.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14253.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14265.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14268.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14280.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14295.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14364.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14369.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14377.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14380.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14490.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14523.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14528.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14575.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14598.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14661.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14679.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14743.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14751.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14807.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14905.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14931.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/14943.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15022.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15035.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15089.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15104.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15109.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15125.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15160.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15181.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15182.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15192.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15199.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15200.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15237.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15242.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15255.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15272.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/153.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15323.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15330.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15348.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15351.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15397.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:19   committee download file: raw_committee_data/15402.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15406.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15409.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15424.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15469.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15477.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15485.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15492.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15497.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15500.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15508.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15523.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15553.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15573.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15577.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15584.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15616.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15627.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15628.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15633.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15643.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15659.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15670.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15705.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15708.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15728.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15741.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15749.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15780.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15802.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15808.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15830.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/159.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/15940.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16015.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16042.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16051.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16057.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16073.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/161.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16205.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16206.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16209.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16404.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16408.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16409.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16480.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16490.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16501.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16502.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16503.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16508.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16510.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16520.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16550.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16590.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16601.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16602.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16603.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16606.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16609.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16610.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:20   committee download file: raw_committee_data/16630.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16650.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16666.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16680.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16690.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16707.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16708.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16709.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16750.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16760.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16790.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16800.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16801.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16802.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16803.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16807.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16808.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16809.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16830.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16857.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16880.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16901.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16902.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16904.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16907.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16908.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16910.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16940.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16950.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16970.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16980.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/16990.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17001.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17003.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17007.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17008.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17010.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17012.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17013.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17015.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17017.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17018.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17022.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17026.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17031.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17033.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17034.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17045.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17047.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17049.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17054.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17065.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17073.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17076.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17082.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17084.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17090.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17091.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17096.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17097.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17099.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17100.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17107.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17108.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17109.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/17135.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/172.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/175.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/180.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/191.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/197.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/212.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/2225.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/2278.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/2362.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/245.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/2452.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/247.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/257.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/26.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/2731.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/275.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/2829.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/283.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/290.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/293.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/295.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/298.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/299.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/302.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/304.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/307.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/3073.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/3077.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/3087.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/3099.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/312.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/314.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/315.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/3161.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/318.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/320.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/321.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/324.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/325.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/326.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/331.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/332.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/333.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/335.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/3362.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/338.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/339.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/340.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/342.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/347.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/348.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/3481.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/349.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/351.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/3591.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/3816.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/3860.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/39.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/4.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/4100.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/4155.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/4221.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/4241.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/4311.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/4507.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/4554.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/4556.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/4583.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/4586.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/4680.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/4681.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/4741.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/4747.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/4752.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/4831.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/5049.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/5072.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/5089.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/51.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/5410.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/5585.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/5667.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/5785.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/6004.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/618.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/622.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/7485.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/8686.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/944.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+
+2014-09-22 21:43:21   committee download file: raw_committee_data/97.txt 
+ Error in fromJSON(content = gsr3) : unused argument (content = gsr3)
+

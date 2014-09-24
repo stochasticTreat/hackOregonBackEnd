@@ -1,12 +1,5 @@
 ﻿
-/*drop table if exists direction_codes;
-create table direction_codes (
-sub_type varchar,
-direction varchar(7)
-);
 
-copy direction_codes from '/Users/samhiggins2001_worldperks/prog/hack_oregon/moneyDirectionCodes.txt' with (format csv, delimiter E'\t');
-*/
 drop table if exists working_transactions;
 create table working_transactions
 	as (
