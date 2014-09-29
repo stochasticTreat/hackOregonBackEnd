@@ -1,7 +1,7 @@
 hackOregonBackEnd
 =================
 
-Scripts to build hack oregon's back end in a vagrant virtual machine.
+Scripts to build Hack Oregon's back end in a vagrant virtual machine.
 
 To install the backend:
 
