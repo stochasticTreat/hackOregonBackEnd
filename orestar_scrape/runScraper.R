@@ -29,7 +29,8 @@ ERRORLOGFILENAME="affiliationScrapeErrorlog.txt"
 # dateRangeControler(startDate="5/2/2012", endDate="6/1/2012", dbname="hack_oregon")
 # dateRangeControler(startDate="6/2/2012", endDate="7/1/2012", dbname="hack_oregon")
 # dateRangeControler(startDate="7/2/2012", endDate="8/1/2012", dbname="hack_oregon")
-# dateRangeControler(startDate="1/1/2011", endDate="12/31/2011", dbname="hackoregon") #run on hack oregon my micro
+# dateRangeControler(startDate="1/1/2011", endDate="12/31/2011", dbname="hackoregon") #run on hack oregon my micro #crashed cause it was out of memory.
+# dateRangeControler(startDate="12/1/2011", endDate="12/31/2011", dbname="hackoregon") #had issue/crash with additional record download.
 # dbname = "hack_oregon"
 # tableName="raw_committee_transactions"
 dateRangeControler<-function(tranTableName="raw_committee_transactions", 
