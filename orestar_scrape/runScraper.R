@@ -29,6 +29,7 @@ ERRORLOGFILENAME="affiliationScrapeErrorlog.txt"
 # dateRangeControler(startDate="5/2/2012", endDate="6/1/2012", dbname="hack_oregon")
 # dateRangeControler(startDate="6/2/2012", endDate="7/1/2012", dbname="hack_oregon")
 # dateRangeControler(startDate="7/2/2012", endDate="8/1/2012", dbname="hack_oregon")
+# dateRangeControler(startDate="1/1/2011", endDate="12/31/2011", dbname="hackoregon") #run on hack oregon my micro
 # dbname = "hack_oregon"
 # tableName="raw_committee_transactions"
 dateRangeControler<-function(tranTableName="raw_committee_transactions", 
@@ -422,7 +423,7 @@ getAdditionalRecords<-function(fname, oldestRec){
 	
 	#find oldest record that was retreived
 	
-	cat("\nRe-scraping to fill in date range.\nScrape limits:",as.character(sdate), as.character(oldest),"\n")
+	cat("\nRe-scraping to fill in date range.\nScrape limits:",as.character(sdate), as.character(oldestRec),"\n")
 	scrapeDateRange(startDate=sdate, endDate=as.Date(oldestRec))
 	
 }
