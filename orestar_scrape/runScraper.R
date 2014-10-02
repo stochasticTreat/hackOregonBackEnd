@@ -151,8 +151,17 @@ sendCommitteesToDb<-function(comtab, dbname, rawScrapeComTabName="raw_committees
 		comtab = prepCommitteeTableData(comtab=comtab)
 		cat("\nUploading committee data from scraping to the database,",dbname,"\n")
 		writeCommitteeDataToDatabase(comtab=comtab, rawScrapeComTabName=rawScrapeComTabName, dbname=dbname, appendTo=appendTo)
+		makeRawCommitteesUnique(dbname=dbname,rawScrapeComTabName=rawScrapeComTabName)
 		cat(".")
 	}
+}
+
+makeRawCommitteesUnique<-function(dbname, rawScrapeComTabName){
+	
+	dbr = dbiRead(query=paste('select * from',rawScrapeComTabName), dbname=dbname)
+	dbr = unique(dbr)
+	dbiWrite(tabla=dbr, name=rawScrapeComTabName, appendToTable=F, dbname=dbname)
+	
 }
 
 writeCommitteeDataToDatabase<-function(comtab, rawScrapeComTabName, dbname, appendTo){
