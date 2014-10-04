@@ -217,36 +217,49 @@ safeWrite2<-function(tab, tableName, dbname, port=5432, append=F){
 		while(T){
 			cat("error:\n")
 			cat(res)
-			cat("\nAttempting to fix problem..\n")
 			#handle error: try to extract the line and skip it
 			res = as.character(res)
-			if(grepl(pattern="line [0-9]+", x=res)){
-				badlineTmp = findBadLineFromError(errmess=res)
-				if(badlineTmp!=badline){
-					badline=badlineTmp
-					cat("attempting to remove latin characters...")
-					tab[badline,] = removeLatin(bad=tab[badline,])
-					res = try(expr=dbiWrite(tabla=tab[goodRows,], name=tableName, dbname=dbname, port=port, appendToTable=append), silent=T)
-				} else {
-					cat("could not remove latin characters.\nThis line will not be added to the data base:",
-							tab[badline,],"\n")
-					exRows=c(exRows, badline)
-					goodRows = setdiff(goodRows, exRows)
-					badRows = rbind.data.frame(badRows, tab[badline,])
-				}
-			}else if(grepl(pattern="TRUE", as.character(res))){
+			if(grepl(pattern="line [0-9]+", x=res)){ #if a bad line is found, remove and try again
+				
+				badlineTmp = findBadLineFromError(errmess=res) #pull out the bad line number
+				cat("Pulling out bad line:",
+						tab[badline,],"\n")
+				exRows=c(exRows, badline) #then add the bad line number to exRows
+				goodRows = setdiff(goodRows, exRows) #remove all of exRows from goodRows
+				#try the write again
+				
+			}else if(grepl(pattern="TRUE", as.character(res))){ #got it
 				cat("\nSuccess!!\n")
 				break
-			}else{
-				cat("Could not resolve error:\n", 
-						res,"\n")
-				return(badRows)
+			}else{ #couldn't fix it
+				print("Bad rows found:")
+				print(badRows)
+				stop(paste("Could not find line number in error:\n", 
+						res,"\n"))
 			}
+			res = try(expr=dbiWrite(tabla=tab[goodRows,,drop=FALSE], name=tableName, dbname=dbname, port=port, appendToTable=append), silent=T)
+			
 		}
-	}else{
+		}else{
 		cat("\nSuccess!!\n")
 	}
+	if(length(badRows)){
+		badBlock=tab[badRows,,drop=FALSE]
+		attemptToFixBadLines(badlines=badBlock, dbname=dbname, tableName=tableName)
+	}
+
 	return(badRows)
+	
+}
+
+
+attemptToFixBadLines<-function(badlines,dbname,tableName){
+	
+	badline=badlineTmp
+	cat("attempting to remove latin characters...")
+	badlines = removeLatin(bad=badlines)
+	res = try(expr=dbiWrite(tabla=tab[goodRows,], name=tableName, dbname=dbname, port=port, appendToTable=append), silent=T)
+	
 }
 
 
@@ -260,7 +273,12 @@ findBadLineFromError<-function(errmess){
 }
 
 removeLatin<-function(bad){
-	iconv(x=bad, from="latin1", to="UTF-8")
+	
+	tabClasses = sapply(bad, class)
+	charcols = tabClasses=="character"
+	
+	for(i in 1:nrow(bad)) iconv(x=bad[i,charcols], from="latin1", to="UTF-8")
+	
 }
 
 makeStacked<-function(dfin){

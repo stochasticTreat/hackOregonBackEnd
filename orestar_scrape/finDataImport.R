@@ -26,20 +26,45 @@ if(basename(getwd())=="orestar_scrape"){
 	source("./orestar_scrape/dbi.R")
 }
 
+test.bulkImportTransactions<-function(){
+	fname="./transaction_sets/"
+	bulkImportTransactions(fname=fname, dbname="hack_oregon", tablename="raw_committee_transactions")
+}
 
 bulkImportTransactions<-function(fname, dbname="hackoregon", tablename="raw_committee_transactions"){
+	if( file.info(fname)[1,"isdir"] ){
+		bulkImportFolder(fname=fname, dbname=dbname, tablename=tablename)
+	}else{
+		bulkImportSingleFile(fname=fname, dbname=dbname, tablename=tablename)
+	}
+}
+
+bulkImportFolder<-function(fname, dbname, tablename){
+	
+	cat("\nImporting .tsv and .csv files in folder : \n",fname,"\n")
+	setwd(fname)
+	allFiles = dir()
+	allFiles = allFiles[grepl(pattern="[.]tsv$|[.]csv$", x=allFiles, ignore.case=T)]
+	if(!length(allFiles)) stop("Could not find any .tsv or .csv files in the directory: ",fname)
+	for(fn in allFiles){
+		cat("\nCurrent file:",fn,"\n")
+		bulkImportSingleFile(fname=fn, dbname=dbname, tablename=tablename)
+	}
+	
+}
+
+bulkImportSingleFile<-function(fname, dbname, tablename){
 	#open the table
-	fintab = read.finance.txt(fname=fname)
-	cat("\nOpened transactions table with",nrow(fintab),"rows of transactions\n(ncol=",ncol(fintab),")\n")
+	tab = read.finance.txt(fname=fname)
+	cat("\nOpened transactions table with",nrow(tab),"rows of transactions\n(ncol=",ncol(tab),")\n")
 	#adjust column data types
 	#add to database
 	#check duplicates
-	importTransactionsTableToDb(tab=fintab, tableName=tablename, dbname=dbname)
-	cat("\nWas the import successfull?\n")
+	importTransactionsTableToDb(tab=tab, tableName=tablename, dbname=dbname)
+	cat("\nImport successfull?\n")
 	#test read
-	dbTableExists(tableName=tablename, dbname=dbname)
+	print(dbTableExists(tableName=tablename, dbname=dbname))
 	#move the input file to the /loadedTransactions folder?
-	
 }
 
 exportTransactionsTable<-function(dbname, destFileName=NULL){

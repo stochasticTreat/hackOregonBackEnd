@@ -5,8 +5,8 @@
 #make sure this is run from the correct directory
 if(basename(getwd())!="orestar_scrape") setwd("orestar_scrape")
 
-source("./productionLoadCandidateFilings.R")
-source("./productionCandidateCommitteeDataWithGrassroots.R")
+# source("./productionLoadCandidateFilings.R")
+# source("./productionCandidateCommitteeDataWithGrassroots.R")
 source("./runScraper.R")
 DBNAME="hackoregon"
 
@@ -32,7 +32,6 @@ if(skipDbUpdate!="skipRebuild"){
 	#if this is run from the data_infrastructure folder, (from an ubuntu install) buildOutDBFromRawTables.sh will
 	#be in the parent dir.
 	#make special tables
-	
 	
 	#make working_candidate_committees
 	#!!! created immediately before campaign_detail, in the same SQL script
