@@ -172,9 +172,9 @@ setColumnDataTypesForCommittees<-function(tab){
 setColumnDataTypesForDB<-function(tab){
 	#fix amount column
 	cat("Converting 'amount' column to numeric...\n")
-	tab$amount = makeNumericColumn(colVals=tab$amount, tab=tab)
+	tab$amount = makeNumericColumn(colVals=tab$amount)
 	cat("Converting 'aggregate_amount' column to numeric..\n")
-	tab$aggregate_amount = makeNumericColumn(colVals=tab$aggregate_amount, tab=tab)
+	tab$aggregate_amount = makeNumericColumn(colVals=tab$aggregate_amount)
 	tab = makeDateColumns(tab=tab)
 	tab = makeBoolcolumns(tab=tab, boolcols=c("employ_ind","tran_stsfd_ind","self_employ_ind"))
 	return(tab)
@@ -234,18 +234,20 @@ makeIntegerColumn<-function(colVals, tab, printErrors=T, printErrorValues=F){
 	return(uam2)
 }
 
-makeNumericColumn<-function(colVals, tab){
+makeNumericColumn<-function(colVals){
 	
 	uam2 = as.numeric(colVals)
 	errorIndexes = which(is.na(uam2))
 	#display error indexes
 	if( length(errorIndexes) ){
 		cat(length(errorIndexes), "values could not easily be coorsed to numeric\n")
-		if(!grepl(file.exists("~/data_infrastructre"))) View(tab[errorIndexes,])	
+		if(!grepl(file.exists("~/data_infrastructre"))) View(colVals[errorIndexes,])
+		cat("These are the indexes:\n")
+		print(errorIndexes)
 	}else{
 		cat("\nColumns transformed to numeric data type..\n")
 	}
-
+	cat("Returning converted column values...\n")
 	return(uam2)
 }
 
