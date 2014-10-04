@@ -12,6 +12,7 @@ DBNAME="hackoregon"
 
 args <- commandArgs(trailingOnly=TRUE)
 fname = args[1]
+# fname = "/Users/samhiggins2001_worldperks/prog/hack_oregon/hackOregonBackEnd/raw_committee_transactions.csv"
 skipDbUpdate = args[2]
 if(is.null(skipDbUpdate)|is.na(skipDbUpdate)) skipDbUpdate = "don't skip update"
 cat("\nAttempting to load transactions in bulk from the file\n",fname,"\n")

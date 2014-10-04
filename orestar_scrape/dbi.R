@@ -203,9 +203,56 @@ safeWrite<-function(tab, tableName, dbname, port=5432, append=F){
 }
 
 
+#safeWrite will write a table to a postgres database, while attempting to fix non-standard/latin characters.
+safeWrite2<-function(tab, tableName, dbname, port=5432, append=F){
+	cat("\nWriting table",tableName,"to database",dbname,"...")
+	exRows = c()
+	goodRows = 1:nrow(tab)
+	badRows = NULL
+	res = try(expr=dbiWrite(tabla=tab, name=tableName, dbname=dbname, port=port, appendToTable=append), silent=T)
+	if( !length(grep(pattern="error", x=class(res))) ) return(NULL)
+	
+	badline=-1
+	if(class(res)=="try-error"){
+		while(T){
+			cat("error:\n")
+			cat(res)
+			cat("\nAttempting to fix problem..\n")
+			#handle error: try to extract the line and skip it
+			res = as.character(res)
+			if(grepl(pattern="line [0-9]+", x=res)){
+				badlineTmp = findBadLineFromError(errmess=res)
+				if(badlineTmp!=badline){
+					badline=badlineTmp
+					cat("attempting to remove latin characters...")
+					tab[badline,] = removeLatin(bad=tab[badline,])
+					res = try(expr=dbiWrite(tabla=tab[goodRows,], name=tableName, dbname=dbname, port=port, appendToTable=append), silent=T)
+				} else {
+					cat("could not remove latin characters.\nThis line will not be added to the data base:",
+							tab[badline,],"\n")
+					exRows=c(exRows, badline)
+					goodRows = setdiff(goodRows, exRows)
+					badRows = rbind.data.frame(badRows, tab[badline,])
+				}
+			}else if(grepl(pattern="TRUE", as.character(res))){
+				cat("\nSuccess!!\n")
+				break
+			}else{
+				cat("Could not resolve error:\n", 
+						res,"\n")
+				return(badRows)
+			}
+		}
+	}else{
+		cat("\nSuccess!!\n")
+	}
+	return(badRows)
+}
+
+
 findBadLineFromError<-function(errmess){
 	errmess = as.character(errmess)
-	sError = strsplit(x=errmess, split="\n")[[1]]
+	sError = strsplit(x=errmess, split="\n|,")[[1]]
 	index = grep(pattern="line", x=sError)
 	pl1 = strsplit(x=sError[index], split="line ")[[1]][2]
 	pl2 = as.numeric(gsub(pattern="[a-zA-Z(){}\n]",replacement="",x=pl1))
