@@ -55,7 +55,8 @@ bulkImportTransactions<-function(fname, dbname="hackoregon", tablename="raw_comm
 }
 
 bulkImportFolder<-function(fname, dbname, tablename){
-	
+	errorLogFname = paste0(fname,"/importErrors.txt")
+	errorLogFname = gsub(pattern="//",replacement="/", x=errorLogFname)
 	failedImports=c()
 	cat("\nImporting .tsv and .csv files in folder : \n",fname,"\n")
 	setwd(fname)
@@ -69,14 +70,14 @@ bulkImportFolder<-function(fname, dbname, tablename){
 						}, silent=TRUE )
 		if(grepl(pattern="error", x=class(tres), ignore.case=T)){
 			failedImports = c(failedImports, fn)
-			logError(err=tres, additionalData=fn, errorLogFname=paste(fname,"/importErrors.txt"))
+			logError(err=tres, additionalData=fn, errorLogFname=errorLogFname)
 		}
 	}
 	if(length(failedImports)){
 		cat("\n----------------------------------------------------------------------\n")
 		cat("\nThere were errors while attempting to import records from these files:\n")
 		print(failedImports)
-		cat("\nSee file\n",paste(fname,"/importErrors.txt"),"\nfor details on import errors\n")
+		cat("\nSee file\n",errorLogFname,"\nfor details on import errors\n")
 	}
 }
 
