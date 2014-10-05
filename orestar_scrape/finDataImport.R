@@ -26,6 +26,21 @@ if(basename(getwd())=="orestar_scrape"){
 	source("./orestar_scrape/dbi.R")
 }
 
+logError<-function(err,additionalData="",errorLogFname=NULL){
+	if(!is.null(errorLogFname)) ERRORLOGFILENAME = errorLogFname
+	mess = paste(as.character(Sys.time())," ",additionalData,"\n",as.character(err))
+	message("Errors found in committee data import, see error log: ",ERRORLOGFILENAME)
+	print(mess)
+	warning("Errors found in committee data import, see error log: ",ERRORLOGFILENAME)
+	write.table(file=ERRORLOGFILENAME, x=mess, 
+							append=TRUE, 
+							col.names=FALSE, 
+							row.names=FALSE, 
+							quote=FALSE)
+	cat("\nError log written to file '",ERRORLOGFILENAME,"'\n")
+}
+
+
 test.bulkImportTransactions<-function(){
 	fname="./transaction_sets/"
 	bulkImportTransactions(fname=fname, dbname="hack_oregon", tablename="raw_committee_transactions")
@@ -41,6 +56,7 @@ bulkImportTransactions<-function(fname, dbname="hackoregon", tablename="raw_comm
 
 bulkImportFolder<-function(fname, dbname, tablename){
 	
+	failedImports=c()
 	cat("\nImporting .tsv and .csv files in folder : \n",fname,"\n")
 	setwd(fname)
 	allFiles = dir()
@@ -48,9 +64,20 @@ bulkImportFolder<-function(fname, dbname, tablename){
 	if(!length(allFiles)) stop("Could not find any .tsv or .csv files in the directory: ",fname)
 	for(fn in allFiles){
 		cat("\nCurrent file:",fn,"\n")
-		bulkImportSingleFile(fname=fn, dbname=dbname, tablename=tablename)
+		tres = try(expr={
+							bulkImportSingleFile(fname=fn, dbname=dbname, tablename=tablename)
+						}, silent=TRUE )
+		if(grepl(pattern="error", x=class(tres), ignore.case=T)){
+			failedImports = c(failedImports, fn)
+			logError(err=tres, additionalData=fn, errorLogFname=paste(fname,"/importErrors.txt"))
+		}
 	}
-	
+	if(length(failedImports)){
+		cat("\n----------------------------------------------------------------------\n")
+		cat("\nThere were errors while attempting to import records from these files:\n")
+		print(failedImports)
+		cat("\nSee file\n",paste(fname,"/importErrors.txt"),"\nfor details on import errors\n")
+	}
 }
 
 bulkImportSingleFile<-function(fname, dbname, tablename){
@@ -75,7 +102,6 @@ exportTransactionsTable<-function(dbname, destFileName=NULL){
 	write.finance.txt(dat=tab, fname=destFileName)
 	
 }
-
 
 checkRemoveNonStandardCharacters<-function(df,encodings=c("latin1","latin2")){
 	
