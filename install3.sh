@@ -40,6 +40,7 @@ sudo cp ./hackoregon.sql.bz2 ~/data_infrastructure/hackoregon.sql.bz2
 sudo chmod 755 ./buildoutFromGitRepo.sh
 sudo ./buildOutFromGitRepo.sh
 
+sudo ./setPermissionsForCronTab.sh
 # cd ~
 # cwd=$(pwd)
 # datadir="${cwd}/data_infrastructure"
@@ -67,4 +68,3 @@ sudo ./orestar_scrape/bulkAddTransactions.R ~/data_infrastructure/successfullyMe
 sudo chmod 755 ./buildOutDBFromRawTables.sh
 sudo ./buildOutDBFromRawTables.sh
 
-sudo ./setPermissionsForCronTab.sh
