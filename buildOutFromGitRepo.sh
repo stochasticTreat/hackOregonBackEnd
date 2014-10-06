@@ -57,6 +57,8 @@ sudo cp -vu bulkLoadCommitteeData.sh ~/bulkLoadCommitteeData.sh
 sudo chmod 755 loadCandidateFilings.sh
 sudo cp -vu loadCandidateFilings.sh ~/loadCandidateFilings.sh
 sudo cp -vu exportTableToTsv.R ~/exportTableToTsv.R
+sudo chmod 544 dailycron.txt
+sudo cp -vu dailycron.txt ~/dailycron.txt
 
 #scraper infrastructure
 sudo cp -avru ./endpoints ~/data_infrastructure/ 

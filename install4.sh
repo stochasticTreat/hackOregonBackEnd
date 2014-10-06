@@ -17,4 +17,8 @@ sudo ./buildScraper.sh
 # sudo npm install 
 # cd orestar_scrape_committees
 # sudo npm install
-
+# cd
+# echo "Setting up cron job"
+# crontab dailycron.txt
+# echo "Checking that cron job was established:"
+# crontab -l

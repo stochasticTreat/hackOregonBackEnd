@@ -1,0 +1,1 @@
+0 8 * * * ~/data_infrastructure/orestar_scrape/getMostRecentTransactions.R > ~/cronresults.txt
