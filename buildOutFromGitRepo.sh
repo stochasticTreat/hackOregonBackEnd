@@ -36,7 +36,7 @@ sudo chmod 755 endpoints/candidateByState/buildCandidateByStateEndpoint.sh
 sudo chmod 755 makeCCWorkingTransactions.sh
 sudo chmod 755 ./orestar_scrape/bulkAddTransactions.R
 sudo chmod 755 ./orestar_scrape/getMostRecentTransactions.R
-
+sudo chmod 755 ./setPermissionsForCronTab.sh
 
 #core raw database files
 sudo cp -vu ./.Rprofile ~/.Rprofile
