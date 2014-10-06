@@ -67,3 +67,4 @@ sudo ./orestar_scrape/bulkAddTransactions.R ~/data_infrastructure/successfullyMe
 sudo chmod 755 ./buildOutDBFromRawTables.sh
 sudo ./buildOutDBFromRawTables.sh
 
+sudo ./setPremissionsForCronTab.sh

@@ -28,14 +28,14 @@ if(is.na(small)) small = "big"
 q1 = paste("select * from",tname,";")
 res1 = dbiRead(query=q1, dbname=dbname)
 
-if(small="small"){
+if(small=="small"){
 	
 	#make folder out of table name and move to that folder
 	dir.create(path=tname, showWarnings=F)
 	setwd(tname)
 	#add files 1 year at a time to the folder
 	
-		#create an index out of years
+	#create an index out of years
 	yindex = year(res1$tran_date)
 	uyear = unique(yindex)
 	for(y in uyear){
