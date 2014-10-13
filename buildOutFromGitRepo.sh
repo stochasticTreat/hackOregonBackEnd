@@ -21,6 +21,7 @@ fi
 echo "current working directory inside buildOutFromGitRepo:"
 pwd
 
+sudo chmod 755 hackOregonDbStatusLogger.R
 sudo chmod 755 exportTableToTsv.R
 sudo chmod 755 orestar_scrape/getMissingCommittees.R
 sudo chmod 755 addDirectionCodes.sh
@@ -36,7 +37,7 @@ sudo chmod 755 endpoints/candidateByState/buildCandidateByStateEndpoint.sh
 sudo chmod 755 makeCCWorkingTransactions.sh
 sudo chmod 755 ./orestar_scrape/bulkAddTransactions.R
 sudo chmod 755 ./orestar_scrape/getMostRecentTransactions.R
-sudo chmod 755 ./setPermissionsForCronTab.sh
+
 
 #core raw database files
 sudo cp -vu ./.Rprofile ~/.Rprofile
@@ -59,6 +60,10 @@ sudo cp -vu loadCandidateFilings.sh ~/loadCandidateFilings.sh
 sudo cp -vu exportTableToTsv.R ~/exportTableToTsv.R
 sudo chmod 544 dailycron.txt
 sudo cp -vu dailycron.txt ~/dailycron.txt
+sudo cp -vu hackOregonDbStatusLogger.R ~/hackOregonDbStatusLogger.R
+sudo chmod 755 ./setPermissionsForCronTab.sh
+sudo cp -vu setPermissionsForCronTab.sh ~/setPermissionsForCronTab.sh
+
 
 #scraper infrastructure
 sudo cp -avru ./endpoints ~/data_infrastructure/ 
@@ -79,3 +84,5 @@ sudo cp -vu ./makeCCWorkingTransactions.sh ~/data_infrastructure/makeCCWorkingTr
 sudo cp -vu ./postSchemaInstallationEndpoints.sh ~/data_infrastructure/postSchemaInstallationEndpoints.sh
 sudo cp -vu ./workingCommitteesFromInitialRaw.sql ~/data_infrastructure/workingCommitteesFromInitialRaw.sql
 
+cd
+sudo ./setPermissionsForCronTab.sh
