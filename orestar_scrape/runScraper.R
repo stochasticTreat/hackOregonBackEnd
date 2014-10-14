@@ -136,6 +136,7 @@ getMissingCommittees<-function(transactionsTable,
 	#find committees missing from both
 	missingCommittees = intersect(dbres, dbres2)
 	if(length(missingCommittees)){
+		cat("\n",length(missingCommittees),"committee IDs found to be in transaction records but not in committee records...\n")
 		scrapeTheseCommittees(committeeNumbers=missingCommittees, commfold=rawCommitteeDataFolder)
 		logWarnings(warnings())
 		rectab = rawScrapeToTable(committeeNumbers=missingCommittees, rawdir=rawCommitteeDataFolder)
@@ -154,7 +155,10 @@ sendCommitteesToDb<-function(comtab, dbname, rawScrapeComTabName="raw_committees
 		cat("\nPreping scraped committee data for entry into database.\n")
 		comtab = prepCommitteeTableData(comtab=comtab)
 		cat("\nUploading committee data from scraping to the database,",dbname,"\n")
-		writeCommitteeDataToDatabase(comtab=comtab, rawScrapeComTabName=rawScrapeComTabName, dbname=dbname, appendTo=appendTo)
+		writeCommitteeDataToDatabase(comtab=comtab, 
+																 rawScrapeComTabName=rawScrapeComTabName, 
+																 dbname=dbname, 
+																 appendTo=appendTo)
 		makeRawCommitteesUnique(dbname=dbname,rawScrapeComTabName=rawScrapeComTabName)
 		cat(".")
 	}
@@ -175,11 +179,19 @@ writeCommitteeDataToDatabase<-function(comtab, rawScrapeComTabName, dbname, appe
 	if(dbTableExists(tableName=rawScrapeComTabName, dbname=dbname)){
 		#get the current set of records
 		fromdb = dbiRead(query=paste("select * from",rawScrapeComTabName), dbname=dbname)
+		#remove records whos ids are found in the incoming raw scrapes
+		fromdb = fromdb[ !fromdb$id %in% comtab$id, ,drop=FALSE]
+		#merge, filling in columns
+		fulltab = rbind.fill(fromdb, comtab)
+		
+		# 		idc = table(fulltab$id)
+		# 		duprec = names(idc[idc==2])
 		#delete any from the database that are in the current set
-		alreadyInDb = intersect(fromdb$id, comtab$id)
-		if(length(alreadyInDb)) dropRecordsFromDb(tname=rawScrapeComTabName, dbname=dbname, colname="id", ids=alreadyInDb)
+		# 		alreadyInDb = intersect(fromdb$id, comtab$id)
+		# 		if(length(alreadyInDb)) dropRecordsFromDb(tname=rawScrapeComTabName, dbname=dbname, colname="id", ids=alreadyInDb)
+	
 	}
-	dbiWrite(tabla=comtab, name=rawScrapeComTabName, appendToTable=appendTo, dbname=dbname)
+	dbiWrite(tabla=comtab, name=rawScrapeComTabName, appendToTable=FALSE, dbname=dbname)
 }
 
 dropRecordsFromDb<-function(tname, dbname, colname, ids){
