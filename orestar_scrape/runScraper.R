@@ -159,6 +159,7 @@ sendCommitteesToDb<-function(comtab, dbname, rawScrapeComTabName="raw_committees
 																 rawScrapeComTabName=rawScrapeComTabName, 
 																 dbname=dbname, 
 																 appendTo=appendTo)
+		cat("\ncommittee data uploaded\n")
 		makeRawCommitteesUnique(dbname=dbname,rawScrapeComTabName=rawScrapeComTabName)
 		cat(".")
 	}
@@ -177,6 +178,7 @@ writeCommitteeDataToDatabase<-function(comtab, rawScrapeComTabName, dbname, appe
 	#check that committee data is unique
 	#check if the table exists
 	if(dbTableExists(tableName=rawScrapeComTabName, dbname=dbname)){
+		cat("\nTable",rawScrapeComTabName,"already exists, rebuilding.. .\n")
 		#get the current set of records
 		fromdb = dbiRead(query=paste("select * from",rawScrapeComTabName), dbname=dbname)
 		#remove records whos ids are found in the incoming raw scrapes

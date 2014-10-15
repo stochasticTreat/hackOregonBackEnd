@@ -128,7 +128,7 @@ BEGIN
 
   SELECT array_to_json(array_agg(row_to_json(qres, true)), true)
   FROM
-    (SELECT state, sum(value)
+    (SELECT state, sum(value) as value
     FROM candidate_by_state 
     where direction = 'in'
     group by state) qres
@@ -147,7 +147,7 @@ BEGIN
 
   SELECT array_to_json(array_agg(row_to_json(qres, true)), true)
   FROM
-    (SELECT state, sum(value)
+    (SELECT state, sum(value) as value
     FROM candidate_by_state 
     WHERE direction = 'out'
     GROUP BY state) qres
@@ -156,6 +156,182 @@ BEGIN
   return result;
 END;
 $$ LANGUAGE plpgsql;
+
+DROP TABLE IF EXISTS oregon_by_contributions;
+CREATE TABLE oregon_by_contributions AS
+(
+		WITH cc_working_transactions_agg AS (
+		  SELECT t.book_type, CASE
+		                        WHEN t.book_type IS NULL OR t.book_type = 'Individual' THEN
+		          CASE
+		            WHEN t.amount <= 200 OR t.contributor_payee = 'Miscellaneous Cash Contributions $100 and under ' THEN 'Grassroot'
+		                             ELSE 'Large Donor'
+		                           END
+		                         ELSE
+		                             t.book_type  
+		                       END AS contribution_type, t.amount
+		  FROM cc_working_transactions AS t
+		  WHERE t.sub_type = 'Cash Contribution'
+		)
+		SELECT a.contribution_type, sum(a.amount) as total
+		FROM cc_working_transactions_agg AS a
+		GROUP BY a.contribution_type
+		ORDER BY total
+
+);
+
+DROP FUNCTION IF EXISTS http.get_oregon_by_contributions(name1 text, name2 text, cname text, name4 text);
+CREATE FUNCTION http.get_oregon_by_contributions(name1 text, name2 text, cname text, name4 text) RETURNS json AS $$
+DECLARE
+  result json;
+BEGIN
+
+  SELECT array_to_json(array_agg(row_to_json(qres, true)), true)
+  FROM
+    (
+    	SELECT * 
+    	FROM oregon_by_contributions
+    	) qres
+  INTO result;
+
+  return result;
+END;
+$$ LANGUAGE plpgsql;
+
+DROP TABLE IF EXISTS oregon_by_purpose_codes;
+CREATE TABLE oregon_by_purpose_codes AS
+(
+	WITH trans_split_codes AS (
+	SELECT tran_id, 
+	       amount,
+	       trim(regexp_split_to_table(purpose_codes, E';')) AS purpose_code
+	FROM cc_working_transactions
+	WHERE 
+	  purpose_codes IS NOT NULL
+	  AND direction = 'out'
+	), trans_split_codes_with_counts AS (
+	  SELECT a.tran_id,
+		 a.amount,
+		 count(a.tran_id) OVER (PARTITION BY a.tran_id) as count_trans,
+		 a.purpose_code
+	  FROM trans_split_codes a
+	  
+	), trans_codes_with_sub_amounts AS (
+	  SELECT b.tran_id,
+		 b.amount,
+		 b.purpose_code,
+		 b.count_trans,
+		 b.amount / b.count_trans as sub_amount
+	  FROM trans_split_codes_with_counts b
+	)
+	SELECT c.purpose_code,
+	       SUM(c.sub_amount) as total
+	FROM trans_codes_with_sub_amounts c
+	GROUP BY c.purpose_code
+	ORDER BY c.purpose_code
+);
+
+DROP FUNCTION IF EXISTS http.get_oregon_by_purpose_codes(name1 text, name2 text, cname text, name4 text);
+CREATE FUNCTION http.get_oregon_by_purpose_codes(name1 text, name2 text, cname text, name4 text) RETURNS json AS $$
+DECLARE
+  result json;
+BEGIN
+
+  SELECT array_to_json(array_agg(row_to_json(qres, true)), true)
+  FROM
+    (
+    	SELECT * 
+    	FROM oregon_by_purpose_codes
+   ) qres
+  INTO result;
+
+  return result;
+END;
+$$ LANGUAGE plpgsql;
+
+
+DROP FUNCTION IF EXISTS http.get_oregon_individual_contributors(name1 text, name2 text, cname text, name4 text);
+CREATE FUNCTION http.get_oregon_individual_contributors(name1 text, name2 text, cname text, name4 text) RETURNS json AS $$
+DECLARE
+  result json;
+BEGIN
+
+  SELECT array_to_json(array_agg(row_to_json(qres, true)), true)
+  FROM
+    (
+		SELECT contributor_payee, sum(amount) 
+		FROM cc_working_transactions
+		WHERE book_type = 'Individual'
+		AND sub_type in ('Cash Contribution','In-Kind Contribution')
+		GROUP BY contributor_payee
+		ORDER BY sum(amount) DESC
+		LIMIT 5
+   ) qres
+  INTO result;
+
+  return result;
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT addDocumentation('Summary of data for all of Oregon: contributions by individuals',
+	'oregon_individual_contributors',
+	'To compute contributions from individuals, transactions for the current campaign cycle are filtered to only those with the book type, Individual, and the sub types Cash Contribution and In-Kind Contribution. Then, for each unique contributor/payee all contribution amounts are added together.');
+
+DROP FUNCTION IF EXISTS http.get_oregon_committee_contributors(name1 text, name2 text, cname text, name4 text);
+CREATE FUNCTION http.get_oregon_committee_contributors(name1 text, name2 text, cname text, name4 text) RETURNS json AS $$
+DECLARE
+  result json;
+BEGIN
+
+  SELECT array_to_json(array_agg(row_to_json(qres, true)), true)
+  FROM
+    (
+    	SELECT contributor_payee, sum(amount)
+		FROM cc_working_transactions
+		WHERE book_type in ('Political Committee', 'Political Party Committee')
+		AND sub_type in  ('Cash Contribution','In-Kind Contribution')
+		GROUP BY contributor_payee
+		ORDER BY sum(amount) DESC
+		limit 5
+   ) qres
+  INTO result;
+
+  return result;
+END;
+$$ LANGUAGE plpgsql;
+
+
+SELECT addDocumentation('Summary of data for all of Oregon: contributions from committees',
+	'oregon_committee_contributors',
+	'To compute contributions from committees, transactions for the current campaign cycle are filtered to only those with the book types, Political Committee and Political Party Committee, and the sub types Cash Contribution and In-Kind Contribution. Then, for each unique contributor/payee all contribution amounts are added together.');
+
+DROP FUNCTION IF EXISTS http.get_oregon_business_contributors(name1 text, name2 text, cname text, name4 text);
+CREATE FUNCTION http.get_oregon_business_contributors(name1 text, name2 text, cname text, name4 text) RETURNS json AS $$
+DECLARE
+  result json;
+BEGIN
+
+  SELECT array_to_json(array_agg(row_to_json(qres, true)), true)
+  FROM
+    (
+    	SELECT contributor_payee, sum(amount)
+		FROM cc_working_transactions
+		WHERE book_type = 'Business Entity'
+		AND sub_type in  ('Cash Contribution','In-Kind Contribution')
+		GROUP BY contributor_payee
+		ORDER BY sum(amount) DESC
+		LIMIT 5
+   ) qres
+  INTO result;
+
+  return result;
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT addDocumentation('Summary of data for all of Oregon: contributions from businesses',
+	'oregon_business_contributors',
+	'To compute contributions from businesses, transactions for the current campaign cycle are filtered to only those with the book type Business Entity, and the sub types Cash Contribution and In-Kind Contribution. Then, for each unique contributor/payee all contribution amounts are added together.');
+
 
 /*select http.get_all_oregon_sum('','','','');*/
 
