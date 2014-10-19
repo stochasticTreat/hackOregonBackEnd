@@ -8,8 +8,7 @@ getCCtrasactions<-function(tranTabName, numCommittees=10, dbname="hackoregon"){
 					from ",tranTabName," 
 					join working_committees
 					on filer_id = committee_id
-					and committee_type = 'CC'
-					and direction = 'in'
+					where direction = 'in'
 					group by filer_id
 					order by sum(amount) desc
 					limit ",numCommittees,")
@@ -89,9 +88,11 @@ displayDistContAmount<-function(ctran, fname=NULL){
 
 addGrassRootCutCol<-function(ctran){
 	
-	grassRoots = rep("no", time=nrow(ctran))
-	grassRoots[ctran$amount<=200] = "yes"
-	out  = cbind.data.frame(ctran,grassRoots)
+ 	grassRoots = rep("no", time=nrow(ctran))
+# 	grassRoots[ctran$amount<=200] = "yes"
+# 	grassRoots[ctran$contributor_payee == "Miscellaneous Cash Contributions $100 and under "] = "yes"
+	grassRoots[ctran$contributor_payee_class == "grassroots_contributor"] = "yes"
+	out  = cbind.data.frame(ctran,grassRoots, stringsAsFactors=FALSE)
 	return(out)
 	
 }
@@ -164,11 +165,11 @@ replaceNA<-function(tin, replacementValue=0){
 
 getUniqueCommittees<-function(tranTabName,dbname){
 	
-	q1  = paste("select distinct filer_id, sub1.candidate_name
+	q1  = paste("select distinct filer_id, sub1.candidate_name, filer
 							from ",tranTabName,"
-							join (select committee_id, candidate_name
-								from working_committees 
-								where committee_type='CC') sub1
+							left outer join 
+								(select committee_id, candidate_name
+								from working_committees) sub1
 							on sub1.committee_id=filer_id;")
 	dbres = dbiRead(query=q1, dbname=dbname)
 	return(dbres)
