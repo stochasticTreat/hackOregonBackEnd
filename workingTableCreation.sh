@@ -9,12 +9,15 @@ cd ~/data_infrastructure
 echo "calling addDirectionCodes.sh"
 sudo ./addDirectionCodes.sh 
 
+echo "adding sub_type_from_contributor_payee table, used to determine lumped grassroots donors."
+sudo ./endpoints/add_sub_type_from_contributor_payee.sh
+
 echo "making db call to add the working_transactions table"
 echo "with script ./workingTransactionsTableCreation.sql"
 echo "altering working_transactions table, adding contributor_payee_class column"
 sudo -u postgres psql hackoregon < ./workingTransactionsTableCreation.sql
 #pwd
-#sudo ./endpoints/add_simplified_sub_types.sh #this was added to workingTransactionsTableCreation.sql
+
 
 echo "calling makeWorkingCandidateFilings.R"
 sudo ./makeWorkingCandidateFilings.R
