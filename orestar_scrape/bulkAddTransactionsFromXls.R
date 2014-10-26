@@ -1,4 +1,5 @@
 #!/usr/bin/Rscript
+cat("setting working directory to ~/data_infrastructure/orestar_scrape/")
 setwd("~/data_infrastructure/orestar_scrape/")
 
 cat("This script should be run with one argument:
@@ -24,6 +25,7 @@ scrapedTransactionsToDatabase(tsvFolder=destDir,
 															tableName=tableName, 
 															dbname=dbname)
 
-system(command="sudo ../buildOutDBFromRawTables.sh")
+setwd("..")
+system(command="sudo ./buildOutDBFromRawTables.sh")
 
 system(command=paste("sudo ~/hackOregonDbStatusLogger.R 'bulkAddTransactionsFromXls.R",indir,"'"))

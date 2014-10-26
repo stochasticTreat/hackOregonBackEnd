@@ -37,12 +37,18 @@ ERRORLOGFILENAME="affiliationScrapeErrorlog.txt"
 # dateRangeControler(startDate="3/1/2014", endDate="10/1/2014", dbname="hackoregon")
 # dbname = "hack_oregon"
 # tableName="raw_committee_transactions"
-dateRangeControler<-function(tranTableName="raw_committee_transactions", 
+
+# startDate="1/1/1983"
+# endDate="10/30/2014"
+# neededIds = c(17040, 17044, 17015, 17007)
+
+dateRangeIdControler<-function(neededIds,
+															 tranTableName="raw_committee_transactions", 
 														 startDate=NULL, 
 														 endDate=NULL, 
 														 dbname="hackoregon", 
 														 workingComTabName="working_committees"){
-
+	
 	DBNAME=dbname #a check for the DBNAME artifact
 	
 	transactionsFolder="./transConvertedToTsv/"
@@ -50,8 +56,8 @@ dateRangeControler<-function(tranTableName="raw_committee_transactions",
 	if( is.null(startDate) ){
 		#first get the most recent record
 		q1=paste0("select distinct tran_date 
-			from ",tranTableName," 
-			order by tran_date desc limit 1")
+							from ",tranTableName," 
+							order by tran_date desc limit 1")
 		sd = dbiRead(query=q1, dbname=dbname)[,1,drop=T]
 	}else{ 
 		sd=as.Date(startDate, format="%m/%d/%Y") 
@@ -63,17 +69,21 @@ dateRangeControler<-function(tranTableName="raw_committee_transactions",
 	}else{ 
 		ed=as.Date(endDate, format="%m/%d/%Y") 
 	}
-	cat("\nGetting data range",as.character(sd),"to",as.character(ed),"\n")
-	#get one month at a time
-	dseq = c(seq.Date(from=sd, to=ed, by="month"),ed)
 	
-	for(i in 1:(length(dseq)-1) ){
+	#get one month at a time
+	# 	dseq = c(seq.Date(from=sd, to=ed, by="month"),ed)
+	
+	for(i in 1:length(neededIds) ){
+		cat("\n_________________________________________________\n")
+		cat("Current committee:",neededIds[i])
+		cat("\n_________________________________________________\n")
+		cat("\nGetting data range",as.character(sd),"to",as.character(ed)," for committee",neededIds[i],"\n")
 		gc()
-		scrapeDateRange(startDate=dseq[i], endDate=dseq[i+1], destDir=transactionsFolder)
+		scrapeIdDateRange(startDate=sd, endDate=ed, destDir=transactionsFolder, id=neededIds[i])
 		gc()
 		scrapedTransactionsToDatabase(tsvFolder=transactionsFolder, tableName=tranTableName, dbname=dbname)
 	}
-
+	
 }
 
 readme<-function(){
@@ -88,7 +98,7 @@ readme<-function(){
 			" in a folder named ./orestar_scrape/problemSpreadsheets/\n",
 			" along with any applicable error log output. Attempt to deal\n",
 			" with the errors by normalizing the the document syntax,\n",
-			" then run the function retryXLSImport() to retry the import.\n",
+			" then run the function retryXLSImportWithIds() to retry the import.\n",
 			" Spreadsheets successfully converted to .tsv documents will be\n",
 			" placed in the folder ./orestar_scrape/transConvertedToTsv/")
 	
@@ -147,7 +157,7 @@ getMissingCommittees<-function(transactionsTable,
 	}else{
 		cat("\nNo missing committees found\n")
 	}
-
+	
 	# 	setwd(wdtmp)
 }
 
@@ -194,7 +204,7 @@ writeCommitteeDataToDatabase<-function(comtab, rawScrapeComTabName, dbname, appe
 		#delete any from the database that are in the current set
 		# 		alreadyInDb = intersect(fromdb$id, comtab$id)
 		# 		if(length(alreadyInDb)) dropRecordsFromDb(tname=rawScrapeComTabName, dbname=dbname, colname="id", ids=alreadyInDb)
-	
+		
 	}
 	dbiWrite(tabla=comtab, name=rawScrapeComTabName, appendToTable=FALSE, dbname=dbname)
 }
@@ -238,17 +248,22 @@ getMostRecentMissingTransactions<-function(){
 }
 
 #08-12-2014_09-12-2014
-scrapeDateRange<-function(startDate, endDate, destDir = "./transConvertedToTsv/", indir="./"){
+scrapeIdDateRange<-function(startDate, 
+														endDate, 
+														id, 
+														destDir = "./transConvertedToTsv/", 
+														indir="./scrape_by_filed_date_and_id/"){
 	
 	if(!file.exists(destDir)) dir.create(path=destDir)
-	scrapeByDate(sdate=startDate, edate=endDate)
+	scrapeByDateAndId(sdate=startDate, edate=endDate, id=id)
+	# 	grepPattern="^[0-9]+(-)[0-9]+(-)[0-9]+(_)[0-9]+(-)[0-9]+(-)[0-9]+(.xls)$"
 	converted = importAllXLSFiles(remEscapes=T,
-																grepPattern="^[0-9]+(-)[0-9]+(-)[0-9]+(_)[0-9]+(-)[0-9]+(-)[0-9]+(.xls)$",
+																grepPattern="(.xls)$",
 																remQuotes=T,
 																forceImport=T,
 																indir=indir,
 																destDir=destDir)
-	checkHandleDlLimit(converted=converted)
+	checkHandleDlLimitForId(converted=converted)
 	
 }
 
@@ -257,16 +272,16 @@ logFileImport<-function(fname, dbname){
 	fname="originalXLSdocs/01-02-2014_12-26-2013.xls"
 	#make table
 	dbCall(dbname=dbname, "create table if not exists file_import_log
-													(file_name text,
-													file_extension text,
-													mod_date text,
-													size int);")
+				 (file_name text,
+				 file_extension text,
+				 mod_date text,
+				 size int);")
 	
 	#get mod/import date
 	newrow = data.frame(file_name=basename(fname),
-						 file_extension = file_ext(fname),
-						 mod_date = file.info(fname)$mtime, 
-						 size = file.info(fname)$size)
+											file_extension = file_ext(fname),
+											mod_date = file.info(fname)$mtime, 
+											size = file.info(fname)$size)
 	
 	cat("Logging file import:", fname,"\n")
 	dbiWrite(tabla=newrow, 
@@ -282,11 +297,11 @@ file.logged<-function(fname, dbname){
 											mod_date = file.info(fname)$mtime, 
 											size = file.info(fname)$size)
 	rows = dbiRead(dbname=dbname, query=paste0("select * from 
-											file_import_log 
-											where file_name = '",newrow$file_name,"'
-											and file_extension = '",newrow$file_extension,"' 
-											and mod_date = '",newrow$mod_date,"'
-											and size = ",newrow$size,";"))
+																						 file_import_log 
+																						 where file_name = '",newrow$file_name,"'
+																						 and file_extension = '",newrow$file_extension,"' 
+																						 and mod_date = '",newrow$mod_date,"'
+																						 and size = ",newrow$size,";"))
 	
 	if(nrow(rows)) return(TRUE)
 	return(FALSE)
@@ -294,6 +309,7 @@ file.logged<-function(fname, dbname){
 
 reImportXLS<-function(tableName, dbname, destDir="./transConvertedToTsv/", indir="./"){
 	converted = importAllXLSFiles(remEscapes=T,
+																grepPattern="[.]xls$",
 																remQuotes=T,
 																forceImport=T,
 																indir=indir,
@@ -351,23 +367,23 @@ checkAmmendedTransactions<-function(tableName, dbname){
 	if( !dbTableExists( tableName=amendedTableName, dbname=dbname ) ){
 		cat(" .. ")
 		dbCall(dbname=dbname, sql=paste0("create table ", amendedTableName, " as
-																							 select * from ",tableName,"
-																							 where filer='abraham USA lincoln';") )
+																		 select * from ",tableName,"
+																		 where filer='abraham USA lincoln';") )
 	}
 	cat(" . adding original trasactions to table '", amendedTableName, "'.\n")
 	q2 = paste("insert into", amendedTableName,
-							"select * from ",tableName,
+						 "select * from ",tableName,
 						 "where tran_id in (",paste(tids,collapse=", "), ")")
 	dbCall(sql=q2, dbname=dbname)
 	#remove the originals from the tableName table
-
+	
 	cat(" . deleting original transactions from main transactions table, '",tableName,"'\n")
 	q2 = paste("delete from",tableName,
 						 "where tran_id in (",paste(tids,collapse=", "), ")")
 	dbCall(sql=q2, dbname=dbname)
 	cat(" . ")
 	return()
-}
+	}
 
 getAmmendedTransactionIds<-function(tableName,dbname){
 	q1 = paste0("select tran_id 
@@ -384,10 +400,10 @@ getAmmendedTransactionIds<-function(tableName,dbname){
 removeDuplicateRecords<-function(tableName, dbname, keycol="tran_id"){
 	cat("\nChecking and removing duplicate transactions")
 	queryString1 = paste0("DELETE FROM ",tableName,"
-									WHERE ctid IN (SELECT min(ctid)
-										FROM ",tableName,"
-										GROUP BY ",keycol,"
-										HAVING count(*) > 1);")
+												WHERE ctid IN (SELECT min(ctid)
+												FROM ",tableName,"
+												GROUP BY ",keycol,"
+												HAVING count(*) > 1);")
 	queryString2 = paste0( "select count(*)
 												 from ",tableName,"
 												 group by tran_id
@@ -422,7 +438,7 @@ retryDbImport<-function( tableName, dbname ){
 	}
 }
 
-retryXLSImport<-function(){
+retryXLSImportWithIds<-function(){
 	#first copy the xls documents from the problemSpreadsheets folder to the root folder
 	errorDocs = dir("./orestar_scrape/problemSpreadsheets/")
 	errorXLS = errorDocs[grepl(pattern=".xls$", x=errorDocs)]
@@ -432,17 +448,23 @@ retryXLSImport<-function(){
 		for(ss in errorXLS) file.rename(ss, gsub("problemSpreadsheets/","", x=ss))
 	}
 	converted = importAllXLSFiles(remEscapes=T,
+																grepPattern="[.]xls$",
 																remQuotes=T,
 																forceImport=T,
 																indir="./orestar_scrape/",
 																destDir=destDir)
-	checkHandleDlLimit(converted=converted)
+
+	checkHandleDlLimitForId(converted=converted)
+	
 	storeConvertedXLS(converted=converted)
+	
 }
 
-storeConvertedXLS<-function(converted){
+
+
+storeConvertedXLSForId<-function(converted){
 	convxls = gsub(pattern=".txt$", replacement=".xls", x=converted)
-	convxls = gsub(pattern="/transConvertedToTsv",replacement="",x=convxls)
+	convxls = gsub(pattern="/transConvertedToTsv",replacement="/scrape_by_filed_date_and_id",x=convxls)
 	if(!file.exists("./originalXLSdocs/")) dir.create("./originalXLSdocs/")
 	for(fn in convxls){
 		cat("Moving\n",fn,"\nto\n ./originalXLSdocs/\n")
@@ -454,7 +476,11 @@ storeConvertedXLS<-function(converted){
 # converted = paste0(destDir,dir(path=destDir))
 
 #check each of the converted to see if they have 4999 rows
-checkHandleDlLimit<-function(converted){
+checkHandleDlLimitForId<-function(converted){
+	
+# 	cat("Getting ids from file names.\n")
+# 	stop("not yet implamented: retryXLSImportWithIds/get ids from file names")
+
 	if(!length(converted)) return()
 	oldestRecs = c()
 	maxedFn = c()
@@ -463,7 +489,7 @@ checkHandleDlLimit<-function(converted){
 		# 	cf = converted[1]
 		tab = read.table(cf, header=T, stringsAsFactors=F)
 		print(nrow(tab))
-
+		
 		if(nrow(tab)==4999){
 			cat("\nFound exactly 4999 records, this may indicate the record return limit was reached...")
 			oldestRecs = c(oldestRecs, as.character(min(as.Date(x=tab$Tran.Date, format="%m/%d/%Y"))))
@@ -471,23 +497,31 @@ checkHandleDlLimit<-function(converted){
 		}
 	}
 	#move the converted xls documents to another folder so they don't clutter.  
-	storeConvertedXLS(converted=converted)
+	storeConvertedXLSForId(converted=converted)
 	
-	if(length(maxedFn)){
+	if( length(maxedFn) ){
 		for( mi in 1:length(maxedFn) ){
 			cfn = maxedFn[mi]
 			cold = oldestRecs[mi]
-			getAdditionalRecords(fname=cfn, oldestRec=cold)
+			id = getIdFromFileName(cfn)
+			getAdditionalRecordsWithIds(fname=cfn, oldestRec=cold, id=id)
 		}
 	}
 	
 }
 
-getAdditionalRecords<-function(fname, oldestRec){
+getIdFromFileName<-function(fname="./transConvertedToTsv/275_10-30-2014_01-01-2010.txt"){
+	fname = basename(fname)
+	id = as.numeric(gsub(pattern="_[0-9_-]+.txt", replacement="", x=fname))
+	return(id)
+}
+
+getAdditionalRecordsWithIds<-function(fname, oldestRec, id){
 	
 	cat("\nAttempting to get remaining records in the date range that should be found in the file named\n",fname,"\n")
 	#get the date range that would be expected
-	drange = getStartAndEndDates(fname=fname)
+	fnameNoId = gsub(pattern=paste0("^",id,"_"), replacement="", x=basename(fname))
+	drange = getStartAndEndDates(fname=fnameNoId)
 	
 	#figure out the new date range
 	sdate = drange$start
@@ -496,7 +530,9 @@ getAdditionalRecords<-function(fname, oldestRec){
 	#find oldest record that was retreived
 	
 	cat("\nRe-scraping to fill in date range.\nScrape limits:",as.character(sdate), as.character(oldestRec),"\n")
-	scrapeDateRange(startDate=sdate, endDate=as.Date(oldestRec))
+	scrapeIdDateRange(startDate=sdate, 
+										endDate=as.Date(oldestRec), 
+										id=id)
 	
 }
 
@@ -508,28 +544,24 @@ getStartAndEndDates<-function(fname){
 	return(list(start=drange[2], end=drange[1]))
 }
 
-# getAdditionalRecords(fname=fname, tb=tab)
-
-
 
 # dates should be entered in in the format:
 # 07/01/2014 (month/day/year)
 # sdate = "07/01/2014"
 # edate = "07/12/2014"
 #
-scrapeByDate<-function(sdate, edate, delay=10){
+scrapeByDateAndId<-function(sdate, edate, id){
+	delay=sample(x=5:15, size=1)
 	sdate = gsub(pattern="-",replacement="/",x=sdate)
 	edate = gsub(pattern="-",replacement="/",x=edate)
 	wdtmp = getwd()
-	if(basename(wdtmp)!="orestar_scrape"){
-		if(!file.exists("orestar_scrape")) dir.create(path="./orestar_scrape/")
-		setwd("./orestar_scrape/")	
-	}
+	setwd("./scrape_by_filed_date_and_id/")	
+	
 	nodeString = "/usr/local/bin/node"
 	
 	if(!file.exists(nodeString)) nodeString = "/usr/bin/nodejs"
-
-	comString = paste(nodeString," scraper", edate, sdate, delay) #"node scraper 08/12/2014 07/12/2014 5"
+	
+	comString = paste(nodeString," scraper", edate, sdate, delay, id) #"node scraper 08/1/2014 07/1/2014 5 13920"
 	cat("\nCalling the scraper with this string:\n",comString,"\n")
 	sysres = system(command=comString, wait=T, intern=T)
 	

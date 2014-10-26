@@ -333,11 +333,12 @@ importAllXLSFiles<-function(indir="~/prog/hack_oregon/orestar/fins",
 														forceImport=F, 
 														remQuotes=F, 
 														remEscapes=T, 
-														grepPattern=".xls$"){
+														grepPattern="[.]xls$"){
+	
 	cat("Importing transactions from directory:\n",indir,"\n")
 	indir = gsub(pattern="[/]$", replacement="", x=indir)
 	
-	if(is.null(destDir)){
+	if( is.null(destDir) ){
 		destDir = paste0(indir,"/RecordsConvertedToTxt")
 		dir.create(path=destDir, showWarnings=F, recursive=T)
 	}
@@ -348,11 +349,11 @@ importAllXLSFiles<-function(indir="~/prog/hack_oregon/orestar/fins",
 	dir.create(path=errorDir, showWarnings=F,recursive=T)
 	
 	curtab=NULL
-	
-	files = dir(indir)
-	
+
 	errorlog = c()
 	errorFileNames = c()
+	
+	files = dir(indir)
 	cat("files found:\n")
 	print(files)
 	cat("searching for pattern,",grepPattern,"...\n")
@@ -464,6 +465,81 @@ orderFilesByDateFileName<-function(){
 	
 }
 
+#folderName : path to the folder containing txt files to be imported
+#dbname : name of the db getting the record
+#tableName : name of the table the transactions are going into. 
+allTextFilesToDb<-function( folderName, dbname, tableName="raw_committee_transactions" ){
+	
+	folderName = gsub("/$","",folderName)
+	filesWithBlankTranIds = c()
+	allFiles = dir(folderName)
+	successfullyImported = c()
+	
+	txtFiles = allFiles[grepl(pattern=".txt$|.tsv$", x=allFiles, ignore.case=F, perl=T)]
+	txtFiles = txtFiles[txtFiles!="problemSpreadsheetserrorLogTable.txt"]
+	txtfilesfp = paste0(folderName,"/",txtFiles)
+	
+	totalLines = countLinesAllFiles(folderName=folderName)
+	totalLines = totalLines-length(txtfilesfp)
+	cat("Expected total lines in all files:",totalLines,"\n")
+	
+	for(i in 1:length(txtfilesfp)){
+		
+		#open the file
+		tabin = read.finance.txt( txtfilesfp[i] )
+		colnames(tabin)<-fixColumnNames(colnames(tabin))
+		if( sum(is.na(tabin[,1,drop=T])) ){
+			filesWithBlankTranIds = c(filesWithBlankTranIds, txtfilesfp[i])
+		}
+		#add contents of file to tabin
+		if( nrow(tabin) ){#make sure the file is not empty
+			
+			cat(i, txtfilesfp[i],"rows:",nrow(tabin),"\n")
+			
+			if( ( nrow(tabin)==1 & (sum(is.na(tabin[1,]))==ncol(tabin)) ) ) {#make sure the file is not just a header
+				cat("\nBlank table:", txtfilesfp[i], "\n\n")
+				moveToErrorBasket(fname=txtfilesfp[i])
+			}else{
+				#check for blank rows
+				remrows = is.na(tabin[,1])|is.null(tabin[,1])
+				if( sum(remrows) ) tabin = tabin[!remrows,]
+				#send to database.
+				tabin = fixTextFiles(tab=tabin)
+				tabin = unique(tabin)
+				cat("Re-writing repaired file\n")
+				write.finance.txt(dat=tabin, fname=txtfilesfp[i])
+				importTransactionsTableToDb(tab=tabin, tableName=tableName, dbname=dbname)
+				cat("Dimensions of table after blank row check, immediatly prior to entry into database:\n", dim(tabin)[1],"rows", dim(tabin)[2],"columns\n")
+				
+				successfullyImported = c(successfullyImported, txtfilesfp[i])
+			}
+		}else{
+			cat("\nBlank table:",txtfilesfp[i],"\n")
+		}
+		
+	}
+	moveImported(fnames=successfullyImported, sourceDir=folderName)
+}
+
+moveImported<-function(fnames, sourceDir=NULL){
+	sourceDir = gsub(pattern="/$", replacement="",x=sourceDir)
+	destDir = paste0(sourceDir,"/successfullyImportedXlsFiles/")
+	if( ! file.exists(destDir) ) dir.create(destDir)
+	for(fn in fnames){
+		newfn = paste0(destDir,basename(fn))
+		cat("Moving\n",fn,"\nto\n",newfn,"\n")
+		file.rename(from=fn, to=newfn )
+	}
+}
+
+# fname = "./transConvertedToTsv/NA_12-18-2012_06-01-2014.txt"
+moveToErrorBasket<-function(fname, errorDir = "./filesWithImportErrors/"){
+	errorDir = gsub(pattern="/$", replacement="", x=errorDir)
+	if( ! file.exists(errorDir) ) dir.create(errorDir)
+	try({file.rename(from=fname, to=paste0(errorDir,"/",basename(fname)) )}, silent=T)
+	
+}
+
 mergeTxtFiles<-function( folderName ){
 	
 	folderName = gsub("/$","",folderName)
@@ -473,7 +549,6 @@ mergeTxtFiles<-function( folderName ){
 	
 	#see if they can be ordered by file name
 
-	
 	txtFiles = allFiles[grepl(pattern=".txt$|.tsv$", x=allFiles, ignore.case=F, perl=T)]
 	txtFiles = txtFiles[txtFiles!="problemSpreadsheetserrorLogTable.txt"]
 	txtfilesfp = paste0(folderName,"/",txtFiles)
@@ -540,16 +615,6 @@ mergeTxtFiles<-function( folderName ){
 	return(tmp)
 }
 
-moveMerged<-function(fnames,sourceDir=NULL){
-	sourceDir = gsub(pattern="/$", replacement="",x=sourceDir)
-	destDir = paste0(sourceDir,"/successfullyMerged/")
-	if(!file.exists(destDir)) dir.create(destDir)
-	for(fn in fnames){
-		newfn = paste0(destDir,basename(fn))
-		cat("Moving\n",fn,"\nto\n",newfn,"\n")
-		file.rename(from=fn, to=newfn )
-	}
-}
 
 countLinesAllFiles<-function(folderName, sep="\t"){
 	cat("Counting lines in files...")
