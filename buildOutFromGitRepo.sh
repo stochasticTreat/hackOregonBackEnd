@@ -46,7 +46,7 @@ sudo cp -vu ./trimTransactionsTable.sql ~/data_infrastructure/trimTransactionsTa
 sudo cp -vu ./install.sql ~/data_infrastructure/install.sql
 sudo cp -avru ./successfullyMerged ~/data_infrastructure/
 sudo cp -vu ./addDocumentationTable.sql ~/data_infrastructure/
-
+sudo cp -vu ./makeImportDatesTable.sql ~/data_infrastructure/
 #control script
 sudo cp -vu ./buildOutDBFromRawTables.sh ~/data_infrastructure/buildOutDBFromRawTables.sh
 sudo chmod 755 getMissingCommittees.sh

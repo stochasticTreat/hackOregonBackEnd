@@ -46,23 +46,33 @@ dateRangeControler<-function(tranTableName="raw_committee_transactions",
 	DBNAME=dbname #a check for the DBNAME artifact
 	
 	transactionsFolder="./transConvertedToTsv/"
-	
-	if( is.null(startDate) ){
-		#first get the most recent record
-		q1=paste0("select distinct tran_date 
+	if( is.null(startDate)&is.null(endDate) ){
+		
+		#get the current date to the current date minus on month.
+		ed = Sys.Date()
+		m <- as.POSIXlt(ed)
+		m$mon <- m$mon - 1
+		m <- as.Date(m)
+		sd  = m
+			
+	}else{
+		if( is.null(startDate) ){
+			#first get the most recent record
+			q1=paste0("select distinct tran_date 
 			from ",tranTableName," 
 			order by tran_date desc limit 1")
-		sd = dbiRead(query=q1, dbname=dbname)[,1,drop=T]
-	}else{ 
-		sd=as.Date(startDate, format="%m/%d/%Y") 
+			sd = dbiRead(query=q1, dbname=dbname)[,1,drop=T]
+		}else{ 
+			sd=as.Date(startDate, format="%m/%d/%Y") 
+		}
+		if(is.null(endDate)){
+			#second, get the max date
+			ed = Sys.Date()
+		}else{ 
+			ed=as.Date(endDate, format="%m/%d/%Y") 
+		}
 	}
-	
-	if(is.null(endDate)){
-		#second, get the max date
-		ed = Sys.Date()
-	}else{ 
-		ed=as.Date(endDate, format="%m/%d/%Y") 
-	}
+
 	cat("\nGetting data range",as.character(sd),"to",as.character(ed),"\n")
 	#get one month at a time
 	dseq = c(seq.Date(from=sd, to=ed, by="month"),ed)
@@ -319,7 +329,7 @@ scrapedTransactionsToDatabase<-function(tableName, dbname, tsvFolder="./transCon
 	allTextFilesToDb(folderName=tsvFolder, tableName=tableName, dbname=dbname)
 }
 
-importTransactionsTableToDb<-function(tab, tableName, dbname){
+depricated_importTransactionsTableToDb<-function(tab, tableName, dbname){
 	
 	tab = setColumnDataTypesForDB(tab=tab)
 	# 	tabtmp  = tab
@@ -339,7 +349,7 @@ importTransactionsTableToDb<-function(tab, tableName, dbname){
 	
 }
 
-checkAmmendedTransactions<-function(tableName, dbname){
+depricated_checkAmmendedTransactions<-function(tableName, dbname){
 	#get all the original ids for the ammended transactions
 	tids = getAmmendedTransactionIds(tableName=tableName, dbname=dbname)
 	if(!length(tids)) return()
@@ -369,7 +379,7 @@ checkAmmendedTransactions<-function(tableName, dbname){
 	return()
 }
 
-getAmmendedTransactionIds<-function(tableName,dbname){
+depricated_getAmmendedTransactionIds<-function(tableName,dbname){
 	q1 = paste0("select tran_id 
 							from ",tableName," 
 							where tran_id in
@@ -381,26 +391,6 @@ getAmmendedTransactionIds<-function(tableName,dbname){
 	return(c())
 }
 
-removeDuplicateRecords<-function(tableName, dbname, keycol="tran_id"){
-	cat("\nChecking and removing duplicate transactions")
-	queryString1 = paste0("DELETE FROM ",tableName,"
-									WHERE ctid IN (SELECT min(ctid)
-										FROM ",tableName,"
-										GROUP BY ",keycol,"
-										HAVING count(*) > 1);")
-	queryString2 = paste0( "select count(*)
-												 from ",tableName,"
-												 group by tran_id
-												 order by count(*) desc
-												 limit 1;")
-	checkDup  = dbiRead( query=queryString2, dbname=dbname )
-	while( checkDup[1,1] > 1){
-		cat(" ..",sum(checkDup[,1]>1),"duplicate transactions found.. attempting to remove.. ")
-		dbCall(sql=queryString1, dbname=dbname)
-		checkDup  = dbiRead( query=queryString2, dbname=dbname )
-	}
-	cat("duplicates cleaned out\n")
-}
 
 #run this function if there are errors that you corrected
 retryDbImport<-function( tableName, dbname ){
@@ -465,8 +455,8 @@ checkHandleDlLimit<-function(converted){
 		print(nrow(tab))
 
 		if(nrow(tab)==4999){
-			cat("\nFound exactly 4999 records, this may indicate the record return limit was reached...")
-			oldestRecs = c(oldestRecs, as.character(min(as.Date(x=tab$Tran.Date, format="%m/%d/%Y"))))
+			cat("\nFound exactly 4999 records, this may indicate the record return limit was reached...\n")
+			oldestRecs = c(oldestRecs, as.character(min(as.Date(x=tab$Filed.Date, format="%m/%d/%Y"))))
 			maxedFn = c(maxedFn, cf)
 		}
 	}
@@ -534,89 +524,6 @@ scrapeByDate<-function(sdate, edate, delay=10){
 	sysres = system(command=comString, wait=T, intern=T)
 	
 	setwd(wdtmp)
-}
-
-
-getDupRecs<-function(tb){
-	tt = table(tb[,1,drop=TRUE])
-	if(max(tt)==1) return(data.frame())
-	dups = tb[ tb[,1,drop=TRUE] %in% names(tt)[tt>1], ,drop=FALSE]
-	dups = dups[order(dups[,1,drop=TRUE]),,drop=FALSE]
-	return(dups)
-}
-
-handleDupRecs<-function(tab){
-	#get all the records
-	dr = getDupRecs(tab)
-	if(!nrow(dr)) return(tab)
-	cat(nrow(dr),"transaction ids were found multiple times.")
-	#remove the transactions from the main set
-	udtran = unique(dr[,1])
-	tabminus = tab[!tab[,1]%in%udtran,]
-	#select the transactions to keep
-	keepers = filterDupRecs(dr=dr)
-	#merge the kept transactions with the main set
-	tabout = rbind.data.frame(tabminus, keepers)
-	
-}
-
-filterDuplicates<-function(dr){
-	udtran = unique(dr[,1])
-	dr = unique(dr)
-	keepers = NULL 
-	cat("Filtering",nrow(dr),"to",length(udtran),"unique transaction ids.")
-	for(i in 1:length(udtran)){
-		tid = udtran[i]#select a transaction id
-		cat(".",i,"of",length(udtran),".")
-		trows = dr[dr[,1]==tid,]#select the rows with that transaction id
-		rowtots = apply(X=is.na(trows), MARGIN=1, sum)#see how many NAs are in each of the rows with identical ids. 
-		toKeep =  trows[rowtots==min(rowtots),,drop=F]#keep the row with the least number of NAs
-		keepers = rbind.data.frame(keepers, toKeep)
-	}
-	
-	return(keepers)
-}
-
-logProblemDuplicates<-function(pd){
-	cat("\nCould not automatically resolve duplicates.\nSelecting last.\n")
-	cat("These are the transaction ids and the\ncolumn(s) which could not be resolved:")
-	acols = apply(X=pd, MARGIN=2, FUN=function(x){length(unique(x))>1})
-	pcols = names(acols)[acols]
-	print(pd[,c(1,which(colnames(pd)==pcols)),drop=F])
-}
-
-filterDupTransFromDB<-function(tableName, dbname){
-	cat("\nDouble checking for duplicate transactions..\n")
-	#get the duplicated records
-	q1 = paste0("select * 
-								from ",tableName,"
-							where tran_id in
-							(select tran_id
-							 from ",tableName,"
-							 group by tran_id
-							 having count(*) > 1)")
-	dbires = dbiRead(query=q1,dbname=dbname)
-	if( !nrow(dbires) )	 return(FALSE)
-	write.finance.txt(dat=dbires, fname="./duplicatedTransactionRecordsFound.txt")
-	cat(nrow(dbires), "Some transaction ids were found multiple times in the database.\nAttempting to repair..\n")
-	#figure out the correct set
-	udbires = unique(dbires)
-	eluent = filterDuplicates(dr=dbires)
-	recheck = getDupRecs(tb=eluent)
-	if(nrow(recheck)){
-		dupRows = duplicated(x=eluent$tran_id)
-		eluent = eluent[dupRows,,drop=FALSE]
-		message("WARNING: could not remove all duplicate records!!!")
-		warning("Could not remove all duplicate transactions!!!")
-	}
-	uids = unique(eluent[,1])
-	#remove applicable transactions from the db
-	q2 = paste("DELETE FROM ",tableName,"
-				 			WHERE tran_id IN (",paste0(uids, collapse=", "),")")
-	dbCall(sql=q2, dbname=dbname)
-	#add the fixed set of transactions to the db
-	dbiWrite(tabla=eluent, name=tableName, appendToTable=T, dbname=dbname)
-	return(TRUE)
 }
 
 

@@ -9,4 +9,4 @@ echo "If the string 'skipRebuild' is included the script will not attempt to"
 echo "rebuild the working tables and endpoint tables."
 
 cd ~/data_infrastructure/orestar_scrape/
-sudo ./bulkAddTransactions.R $1 $2
+sudo ./bulkAddTransactions.R $1 $2 $3

@@ -12,7 +12,11 @@ activeCommittees = dbiRead(query="select filer_id, count(*)
 													 				order by count(*) desc", dbname=dbname)
 
 activeAndNeededMost = setdiff(activeCommittees$filer_id, originalIds)
-activeAndNeededMost  = setdiff(activeAndNeededMost, c(39, 275, getScrapedIds()))
+activeAndNeededMost  = setdiff(activeAndNeededMost, c(39, 275, getScrapedIds() ))
+
+#getting the committees active in the current cycle, 
+#not found in the originial scraping,
+#and not found in the committees already scraped
 
 dateRangeIdControler(neededIds=activeAndNeededMost, 
 										 workingComTabName="working_committees",
@@ -22,14 +26,15 @@ dateRangeIdControler(neededIds=activeAndNeededMost,
 										 tranTableName="raw_committee_transactions")
 
 #next fill in the ones which were part of the original scrape
+#and are active in the current cycle
 
-activeAndNeeded = intersect(activeCommittees$filer_id, originalIds)
-
+activeAndNeeded = intersect(activeCommittees$filer_id, originalIds )
+activeAndNeeded = setdiff( activeAndNeeded, c(39, 275, getScrapedIds() ) )
 dateRangeIdControler(neededIds=activeAndNeeded, 
 										 workingComTabName="working_committees",
 										 dbname=dbname,
 										 startDate='3/1/2014',
-										 endDate=Sys.Date(),
+										 endDate='10/31/2014',
 										 tranTableName="raw_committee_transactions")
 
 #finally, the inactive committees

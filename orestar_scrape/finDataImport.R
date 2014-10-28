@@ -46,27 +46,28 @@ test.bulkImportTransactions<-function(){
 	bulkImportTransactions(fname=fname, dbname="hack_oregon", tablename="raw_committee_transactions")
 }
 
-bulkImportTransactions<-function(fname, dbname="hackoregon", tablename="raw_committee_transactions"){
+bulkImportTransactions<-function(fname, dbname="hackoregon", tablename="raw_committee_transactions", rapid=TRUE){
 	if( file.info(fname)[1,"isdir"] ){
-		bulkImportFolder(fname=fname, dbname=dbname, tablename=tablename)
+		bulkImportFolder(fname=fname, dbname=dbname, tablename=tablename, rapid=rapid)
 	}else{
-		bulkImportSingleFile(fname=fname, dbname=dbname, tablename=tablename)
+		bulkImportSingleFile(fname=fname, dbname=dbname, tablename=tablename, rapid=rapid)
 	}
 }
 
-bulkImportFolder<-function(fname, dbname, tablename){
+bulkImportFolder<-function(fname, dbname, tablename, rapid=FALSE){
 	errorLogFname = paste0(fname,"/importErrors.txt")
 	errorLogFname = gsub(pattern="//",replacement="/", x=errorLogFname)
 	failedImports=c()
 	cat("\nImporting .tsv and .csv files in folder : \n",fname,"\n")
 	setwd(fname)
 	allFiles = dir()
-	allFiles = allFiles[grepl(pattern="[.]tsv$|[.]csv$", x=allFiles, ignore.case=T)]
+	allFiles = allFiles[grepl(pattern="[.]tsv$|[.]csv$|[.]txt$", x=allFiles, ignore.case=T)]
 	if(!length(allFiles)) stop("Could not find any .tsv or .csv files in the directory: ",fname)
-	for(fn in allFiles){
-		cat("\nCurrent file:",fn,"\n")
+	for( i in 1:length(allFiles) ){
+		fn = allFiles[i]
+		cat("\nCurrent file:",fn,"(",i,"of",length(allFiles),")\n")
 		tres = try(expr={
-							bulkImportSingleFile(fname=fn, dbname=dbname, tablename=tablename)
+							bulkImportSingleFile(fname=fn, dbname=dbname, tablename=tablename, rapid=rapid)
 						}, silent=TRUE )
 		if(grepl(pattern="error", x=class(tres), ignore.case=T)){
 			failedImports = c(failedImports, fn)
@@ -81,14 +82,197 @@ bulkImportFolder<-function(fname, dbname, tablename){
 	}
 }
 
-bulkImportSingleFile<-function(fname, dbname, tablename){
+importTransactionsTableToDb<-function(tab, tableName, dbname, rapid=FALSE){
+
+	tab = setColumnDataTypesForDB(tab=tab)
+	if(rapid){#find which transactions have already been added
+		cat("\nUsing rapid import.\n")
+		tab = extractMissingTransactions( tab=tab, tableName=tableName, dbname=dbname )
+	}else{
+		cat("\nUsing detailed, methodical import.\n")
+	}
+	
+	if( !is.null(tab) ){
+		badRows = safeWrite(tab=tab, tableName=tableName, dbname=dbname, append=T)
+		if( !is.null(badRows) ){
+			badRowFile = "./orestar_scrape/problemSpreadsheets/notPutIntoDb.txt"
+			write.finance.txt(dat=badRows, fname=badRowFile)
+			em = paste("Some lines could not be read into the database, these lines can be found in this file:\n",
+								 badRowFile,"\nTo input this data, please attempt to fix the data, checking for special or\n",
+								 "non-standard characters, then run the function retryDbImport()")
+			message(em)
+			warning(em)
+		}
+		if(!rapid) removeDuplicateRecords(tableName=tableName, keycol="tran_id", dbname=dbname)
+		
+		blnk=checkAmmendedTransactions(tableName=tableName, dbname=dbname)
+		
+		if(!rapid) filterDupTransFromDB(tableName=tableName, dbname=dbname)
+	}
+	
+}
+
+
+handleDupRecs<-function(tab){
+	#get all the records
+	dr = getDupRecs(tab)
+	if(!nrow(dr)) return(tab)
+	cat(nrow(dr),"transaction ids were found multiple times.")
+	#remove the transactions from the main set
+	udtran = unique(dr[,1])
+	tabminus = tab[!tab[,1]%in%udtran,]
+	#select the transactions to keep
+	keepers = filterDupRecs(dr=dr)
+	#merge the kept transactions with the main set
+	tabout = rbind.data.frame(tabminus, keepers)
+	
+}
+
+filterDuplicates<-function(dr){
+	udtran = unique(dr[,1])
+	dr = unique(dr)
+	keepers = NULL 
+	cat("Filtering",nrow(dr),"to",length(udtran),"unique transaction ids.")
+	for(i in 1:length(udtran)){
+		tid = udtran[i]#select a transaction id
+		cat(".",i,"of",length(udtran),".")
+		trows = dr[dr[,1]==tid,]#select the rows with that transaction id
+		rowtots = apply(X=is.na(trows), MARGIN=1, sum)#see how many NAs are in each of the rows with identical ids. 
+		toKeep =  trows[rowtots==min(rowtots),,drop=F]#keep the row with the least number of NAs
+		keepers = rbind.data.frame(keepers, toKeep)
+	}
+	
+	return(keepers)
+}
+
+
+getDupRecs<-function(tb){
+	tt = table(tb[,1,drop=TRUE])
+	if(max(tt)==1) return(data.frame())
+	dups = tb[ tb[,1,drop=TRUE] %in% names(tt)[tt>1], ,drop=FALSE]
+	dups = dups[order(dups[,1,drop=TRUE]),,drop=FALSE]
+	return(dups)
+}
+
+
+logProblemDuplicates<-function(pd){
+	cat("\nCould not automatically resolve duplicates.\nSelecting last.\n")
+	cat("These are the transaction ids and the\ncolumn(s) which could not be resolved:")
+	acols = apply(X=pd, MARGIN=2, FUN=function(x){length(unique(x))>1})
+	pcols = names(acols)[acols]
+	print(pd[,c(1,which(colnames(pd)==pcols)),drop=F])
+}
+
+filterDupTransFromDB<-function(tableName, dbname){
+	cat("\nDouble checking for duplicate transactions..\n")
+	#get the duplicated records
+	q1 = paste0("select * 
+							from ",tableName,"
+							where tran_id in
+							(select tran_id
+							from ",tableName,"
+							group by tran_id
+							having count(*) > 1)")
+	dbires = dbiRead(query=q1,dbname=dbname)
+	if( !nrow(dbires) )	 return(FALSE)
+	write.finance.txt(dat=dbires, fname="./duplicatedTransactionRecordsFound.txt")
+	cat(nrow(dbires), "Some transaction ids were found multiple times in the database.\nAttempting to repair..\n")
+	#figure out the correct set
+	udbires = unique(dbires)
+	eluent = filterDuplicates(dr=dbires)
+	recheck = getDupRecs(tb=eluent)
+	if(nrow(recheck)){
+		dupRows = duplicated(x=eluent$tran_id)
+		eluent = eluent[dupRows,,drop=FALSE]
+		message("WARNING: could not remove all duplicate records!!!")
+		warning("Could not remove all duplicate transactions!!!")
+	}
+	uids = unique(eluent[,1])
+	#remove applicable transactions from the db
+	q2 = paste("DELETE FROM ",tableName,"
+						 WHERE tran_id IN (",paste0(uids, collapse=", "),")")
+	dbCall(sql=q2, dbname=dbname)
+	#add the fixed set of transactions to the db
+	dbiWrite(tabla=eluent, name=tableName, appendToTable=T, dbname=dbname)
+	return(TRUE)
+}
+
+
+
+removeDuplicateRecords<-function(tableName, dbname, keycol="tran_id"){
+	cat("\nChecking and removing duplicate transactions")
+	queryString1 = paste0("DELETE FROM ",tableName,"
+												WHERE ctid IN (SELECT min(ctid)
+												FROM ",tableName,"
+												GROUP BY ",keycol,"
+												HAVING count(*) > 1);")
+	queryString2 = paste0( "select count(*)
+												 from ",tableName,"
+												 group by tran_id
+												 order by count(*) desc
+												 limit 1;")
+	checkDup  = dbiRead( query=queryString2, dbname=dbname )
+	while( checkDup[1,1] > 1){
+		cat(" ..",sum(checkDup[,1]>1),"duplicate transactions found.. attempting to remove.. ")
+		dbCall(sql=queryString1, dbname=dbname)
+		checkDup  = dbiRead( query=queryString2, dbname=dbname )
+	}
+	cat("duplicates cleaned out\n")
+}
+
+
+
+checkAmmendedTransactions<-function(tableName, dbname){
+	#get all the original ids for the ammended transactions
+	tids = getAmmendedTransactionIds(tableName=tableName, dbname=dbname)
+	if(!length(tids)) return()
+	message("Ammended transaction issue found!")
+	cat("\nAmmended transaction IDs:\n")
+	print(tids)
+	#copy the originals to the ammended to the ammended_transactions table
+	amendedTableName = paste0(tableName,"_ammended_transactions")
+	if( !dbTableExists( tableName=amendedTableName, dbname=dbname ) ){
+		cat(" .. ")
+		dbCall(dbname=dbname, sql=paste0("create table ", amendedTableName, " as
+																		 select * from ",tableName,"
+																		 where filer='abraham USA lincoln';") )
+	}
+	cat(" . adding original trasactions to table '", amendedTableName, "'.\n")
+	q2 = paste("insert into", amendedTableName,
+						 "select * from ",tableName,
+						 "where tran_id in (",paste(tids,collapse=", "), ")")
+	dbCall(sql=q2, dbname=dbname)
+	#remove the originals from the tableName table
+	
+	cat(" . deleting original transactions from main transactions table, '",tableName,"'\n")
+	q2 = paste("delete from",tableName,
+						 "where tran_id in (",paste(tids,collapse=", "), ")")
+	dbCall(sql=q2, dbname=dbname)
+	cat(" . ")
+	return()
+	}
+
+getAmmendedTransactionIds<-function(tableName,dbname){
+	q1 = paste0("select tran_id 
+							from ",tableName," 
+							where tran_id in
+							(select original_id
+							from ",tableName,"
+							where tran_status = 'Amended');")
+	amdid = dbiRead(dbname=dbname, query=q1)
+	if(nrow(amdid)) return(amdid[,1,drop=T])
+	return(c())
+}
+
+# fname = "./transConvertedToTsv/successfullyImportedXlsFiles/09-27-2014_09-27-2014.txt"
+bulkImportSingleFile<-function(fname, dbname, tablename, rapid=TRUE){
 	#open the table
 	tab = read.finance.txt(fname=fname)
 	cat("\nOpened transactions table with",nrow(tab),"rows of transactions\n(ncol=",ncol(tab),")\n")
 	#adjust column data types
 	#add to database
 	#check duplicates
-	importTransactionsTableToDb(tab=tab, tableName=tablename, dbname=dbname)
+	importTransactionsTableToDb(tab=tab, tableName=tablename, dbname=dbname, rapid=rapid)
 	cat("\nImport successfull?\n")
 	#test read
 	print(dbTableExists(tableName=tablename, dbname=dbname))
@@ -475,7 +659,7 @@ allTextFilesToDb<-function( folderName, dbname, tableName="raw_committee_transac
 	allFiles = dir(folderName)
 	successfullyImported = c()
 	
-	txtFiles = allFiles[grepl(pattern=".txt$|.tsv$", x=allFiles, ignore.case=F, perl=T)]
+	txtFiles = allFiles[grepl(pattern=".txt$", x=allFiles, ignore.case=F, perl=T)]
 	txtFiles = txtFiles[txtFiles!="problemSpreadsheetserrorLogTable.txt"]
 	txtfilesfp = paste0(folderName,"/",txtFiles)
 	

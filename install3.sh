@@ -57,6 +57,8 @@ sudo -u postgres psql hackoregon < ./hackoregon.sql
 
 sudo -u postgres psql hackoregon < ./trimTransactionsTable.sql
 
+sudo -u postgres psql hackoregon < ./makeImportDatesTable.sql
+
 sudo -u postgres createlang plpgsql
 
 # sudo -u postgres psql hackoregon < ./campaign_detail.sql #will try building this on the fly... 
