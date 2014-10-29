@@ -58,9 +58,9 @@ dateRangeControler<-function(tranTableName="raw_committee_transactions",
 	}else{
 		if( is.null(startDate) ){
 			#first get the most recent record
-			q1=paste0("select distinct tran_date 
-			from ",tranTableName," 
-			order by tran_date desc limit 1")
+			q1=paste0("select distinct filed_date 
+			from working_transactions 
+			order by filed_date desc limit 1")
 			sd = dbiRead(query=q1, dbname=dbname)[,1,drop=T]
 		}else{ 
 			sd=as.Date(startDate, format="%m/%d/%Y") 

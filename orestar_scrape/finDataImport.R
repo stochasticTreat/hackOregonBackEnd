@@ -193,7 +193,7 @@ bulkImportFolder<-function(fname, dbname, tablename, rapid=FALSE){
 }
 
 importTransactionsTableToDb<-function(tab, tableName, dbname, rapid=FALSE){
-
+	badrows=NULL
 	tab = setColumnDataTypesForDB(tab=tab)
 	if(rapid){#find which transactions have already been added
 		cat("\nUsing rapid import.\n")
@@ -203,6 +203,7 @@ importTransactionsTableToDb<-function(tab, tableName, dbname, rapid=FALSE){
 	}
 	
 	if( !is.null(tab) ){
+		
 		badRows = safeWrite(tab=tab, tableName=tableName, dbname=dbname, append=T)
 		if( !is.null(badRows) ){
 			badRowFile = "./orestar_scrape/problemSpreadsheets/notPutIntoDb.txt"
@@ -213,12 +214,16 @@ importTransactionsTableToDb<-function(tab, tableName, dbname, rapid=FALSE){
 			message(em)
 			warning(em)
 		}
+		
 		if(!rapid) removeDuplicateRecords(tableName=tableName, keycol="tran_id", dbname=dbname)
 		
 		blnk=checkAmmendedTransactions(tableName=tableName, dbname=dbname)
 		
 		if(!rapid) filterDupTransFromDB(tableName=tableName, dbname=dbname)
 	}
+	
+	if(is.null(badrows)) return(0)
+	return(nrow(badrows))
 	
 }
 
@@ -382,12 +387,40 @@ bulkImportSingleFile<-function(fname, dbname, tablename, rapid=TRUE){
 	#adjust column data types
 	#add to database
 	#check duplicates
-	importTransactionsTableToDb(tab=tab, tableName=tablename, dbname=dbname, rapid=rapid)
+	res=importTransactionsTableToDb(tab=tab, tableName=tablename, dbname=dbname, rapid=rapid)
 	cat("\nImport successfull?\n")
+	
+	cat(res,"records were not successfully imported.")
 	#test read
-	print(dbTableExists(tableName=tablename, dbname=dbname))
+	print(dbTableExists( tableName=tablename, dbname=dbname ))
 	#move the input file to the /loadedTransactions folder?
+	mess = "Full import"
+	if(res>0) mess = cat(res,"records could not be imported.")
+	checkAndNoteCommitteeImport(fname=fname, mess=mess)
+	
 }
+
+# fname = "./transConvertedToTsv/successfullyImportedXlsFiles/470_09-27-2014_09-27-2014.txt"
+# fname="470_09-27-2014_09-27-2014.txt"
+# fname="09-27-2014_09-27-2014.txt"
+# fname="transConvertedToTsv/successfullyImportedXlsFiles/125_10-31-2014_03-01-2014.txt"
+checkAndNoteCommitteeImport<-function(fname, mess){
+	
+	#check if it was a committee transaction scrape
+	id = getIdFromFileName(fname=fname)
+	if( !is.na(id) ){
+
+		fdate = file.info(fname)$mtime
+		#write data to database
+		dbiWrite(tabla=cbind.data.frame(id=id, scrape_date=fdate, file_name=paste(fname, mess)), 
+						 name="import_dates", 
+						 appendToTable=T, 
+						 dbname=dbname)
+	}
+
+}
+
+
 
 exportTransactionsTable<-function(dbname, destFileName=NULL){
 

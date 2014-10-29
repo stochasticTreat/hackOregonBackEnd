@@ -57,7 +57,9 @@ sudo -u postgres psql hackoregon < ./hackoregon.sql
 
 sudo -u postgres psql hackoregon < ./trimTransactionsTable.sql
 
+sudo -u postgres psql hackoregon -c 'CREATE TABLE raw_committee_transactions_errors AS SELECT * FROM raw_committee_transactions LIMIT 0;'
 
+sudo -u postgres psql hackoregon < ./makeImportDatesTable.sql
 
 sudo -u postgres createlang plpgsql
 
@@ -69,4 +71,4 @@ sudo chmod 755 ./orestar_scrape/bulkAddTransactions.R
 sudo ./orestar_scrape/bulkAddTransactions.R ~/data_infrastructure/successfullyMerged/joinedTables.tsv skipRebuild
 sudo chmod 755 ./buildOutDBFromRawTables.sh
 sudo ./buildOutDBFromRawTables.sh
-sudo -u postgres psql hackoregon < ./makeImportDatesTable.sql
+
