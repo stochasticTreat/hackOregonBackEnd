@@ -21,6 +21,6 @@ tab = data.frame(fnames=fnames, fdates=fdates, ids=ids)
 tab = tab[!is.na(tab$ids),]
 
 #adjust dates in actual table
-q1 = "INSERT INTO "
-dbCall(sql="")
+
+dbiWrite(tabla=tab, name="import_dates", appendToTable=T, dbname=dbname)
 #rebuild db
