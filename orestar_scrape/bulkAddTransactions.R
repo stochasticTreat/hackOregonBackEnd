@@ -26,7 +26,7 @@ if(!is.null(ff)){
 	if(!is.na(ff)){
 		cat("ff not NA")
 		if(ff=='quick'){
-			cat("ff is 'quick'")
+			cat("argument 'quick' passed!")
 			rapid = TRUE
 		}
 	}
@@ -45,6 +45,7 @@ if(rapid){
 cat("Current working directory:",getwd(),"\n")
 # fname = "./transConvertedToTsv/successfullyImportedXlsFiles/"
 bulkImportTransactions(dbname=DBNAME, tablename="raw_committee_transactions", fname=fname, rapid=rapid)
+
 
 if(skipDbUpdate!="skipRebuild"){
 	#rebuild working tables
