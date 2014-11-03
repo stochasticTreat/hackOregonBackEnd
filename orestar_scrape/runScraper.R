@@ -249,7 +249,7 @@ getMostRecentMissingTransactions<-function(){
 }
 
 #08-12-2014_09-12-2014
-indir = "./testTransactionsXls/"
+# indir = "./testTransactionsXls/"
 scrapeDateRange<-function(startDate, endDate, destDir = "./transConvertedToTsv/", indir="./"){
 	
 	if( !file.exists(destDir) ) dir.create(path=destDir)
@@ -262,7 +262,7 @@ scrapeDateRange<-function(startDate, endDate, destDir = "./transConvertedToTsv/"
 																indir=indir,
 																destDir=destDir)
 	cat("\nxls conversion complete, checking download limit.\n")
-	checkHandleDlLimit(converted=converted)
+	checkHandleDlLimit(converted=converted, destDir=destDir)
 	
 }
 
@@ -270,7 +270,7 @@ logFileImport<-function(fname, dbname){
 	library(tools)
 	fname="originalXLSdocs/01-02-2014_12-26-2013.xls"
 	#make table
-	dbCall(dbname=dbname, "create table if not exists file_import_log
+	dbCall(dbname=dbname, sql="create table if not exists file_import_log
 													(file_name text,
 													file_extension text,
 													mod_date text,
@@ -434,12 +434,12 @@ retryXLSImport<-function(){
 	storeConvertedXLS(converted=converted)
 }
 
-storeConvertedXLS<-function(converted){
+storeConvertedXLS<-function(converted, sourcedir="./"){
 	convxls = gsub(pattern=".txt$", replacement=".xls", x=converted)
-	convxls = gsub(pattern="/transConvertedToTsv",replacement="",x=convxls)
+	convxls = gsub(pattern="./transConvertedToTsv/", replacement=sourcedir, x=convxls)
 	if(!file.exists("./originalXLSdocs/")) dir.create("./originalXLSdocs/")
 	for(fn in convxls){
-		cat("Moving\n",fn,"\nto\n ./originalXLSdocs/\n")
+		cat("Moving: ",fn,"\nto:  ./originalXLSdocs/\n")
 		file.rename(from=fn, to=paste0("./originalXLSdocs/", basename(fn) ) )
 	}
 }
@@ -453,7 +453,7 @@ checkForMaxInOneDay<-function(fname){
 }
 
 #check each of the converted to see if they have 4999 rows
-checkHandleDlLimit<-function(converted){
+checkHandleDlLimit<-function(converted, destDir){
 	if(!length(converted)) return()
 	oldestRecs = c()
 	maxedFn = c()
@@ -472,15 +472,16 @@ checkHandleDlLimit<-function(converted){
 	#move the converted xls documents to another folder so they don't clutter.  
 	storeConvertedXLS(converted=converted)
 	
-	if(length(maxedFn)){
+	if( length(maxedFn) ){
 		for( mi in 1:length(maxedFn) ){
 			cfn = maxedFn[mi]
 			cold = oldestRecs[mi]
-			if(!checkForMaxInOneDay(fname=cfn)){
+			if( !checkForMaxInOneDay(fname=cfn) ){
 				getAdditionalRecords( fname=cfn, oldestRec=cold )
 			}else{
 				warning("ERROR: failed to download all records because the maximum download reached in a one day span. See file: ",cfn)
-				handleMaxInOneDay( fname=cfn )
+				handleMaxInOneDay( fname=cfn, destDir=destDir )
+
 			}
 			
 		}
@@ -490,7 +491,7 @@ checkHandleDlLimit<-function(converted){
 
 #fname = "./transConvertedToTsv/2012-10-02_2012-10-02.txt"
 #fname = "./transConvertedToTsv/09-30-2014_09-30-2014.txt"
-handleMaxInOneDay<-function(fname){
+handleMaxInOneDay<-function(fname, destDir){
 	
 	cat("When a single day has more than 4999 transactions, 
 			getting all transactions required they be downloaded 
@@ -512,9 +513,17 @@ handleMaxInOneDay<-function(fname){
 	filedTranDateScrape( filed=fdate, tran_start=tranStart2, tran_end=tranStart1	)
 	
 	scraperdir = "./filed_date_and_tran_date/"
-	allF = dir(scraperdir)
-	allF = allF[grepl(pattern="[.]xls$", x=allF)]
-	for(fl in allF) file.rename(from=paste0(scraperdir,fl), to=paste0("./",fl))
+	# 	allF = dir(scraperdir)
+	# 	allF = allF[grepl(pattern="[.]xls$", x=allF)]
+	# 	for(fl in allF) file.rename(from=paste0(scraperdir,fl), to=paste0("./",fl))
+	
+	converted = importAllXLSFiles(remEscapes=T,
+																grepPattern="^[0-9]+(-)[0-9]+(-)[0-9]+(_)[0-9]+(-)[0-9]+(-)[0-9]+((_)[0-9]+(-)[0-9]+(-)[0-9]+)*(.xls)$",
+																remQuotes=T,
+																forceImport=T,
+																indir=scraperdir,
+																destDir=destDir)
+	storeConvertedXLS(converted=converted, sourcedir=scraperdir)
 	
 }
 

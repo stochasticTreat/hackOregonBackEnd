@@ -13,3 +13,11 @@ cd orestar_scrape_committees
 sudo npm install
 
 
+cd ..
+cd filed_date_and_tran_date
+sudo npm install
+
+
+cd ..
+cd scrape_by_filed_date_and_id
+sudo npm install
