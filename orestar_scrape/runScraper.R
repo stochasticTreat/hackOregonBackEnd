@@ -82,7 +82,9 @@ dateRangeControler<-function(tranTableName="raw_committee_transactions",
 		gc()
 		scrapeDateRange( startDate=dseq[i], endDate=dseq[i+1], destDir=transactionsFolder )
 		gc()
-		scrapedTransactionsToDatabase(tsvFolder=transactionsFolder, tableName=tranTableName, dbname=dbname)
+		scrapedTransactionsToDatabase(tsvFolder=transactionsFolder, 
+																	tableName=tranTableName, 
+																	dbname=dbname)
 	}
 
 }
@@ -523,6 +525,7 @@ handleMaxInOneDay<-function(fname, destDir){
 																forceImport=T,
 																indir=scraperdir,
 																destDir=destDir)
+	
 	storeConvertedXLS(converted=converted, sourcedir=scraperdir)
 	
 }

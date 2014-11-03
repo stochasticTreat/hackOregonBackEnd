@@ -37,3 +37,9 @@ converted = converted[grepl(pattern=".txt$|.tsv$", x=converted)]
 converted = paste0(fileDir, converted)
 checkHandleDlLimit(converted=converted)
 
+tranTableName="raw_committee_transactions"
+dbname="hackoregon"
+transactionsFolder="./transConvertedToTsv/"
+scrapedTransactionsToDatabase(tsvFolder=transactionsFolder, 
+															tableName=tranTableName, 
+															dbname=dbname)
