@@ -40,6 +40,8 @@ sudo chmod 755 ./orestar_scrape/getMostRecentTransactions.R
 sudo chmod 755 ./endpoints/add_simplified_sub_types.sh
 sudo chmod 755 ./endpoints/add_contributor_payee_class_column.sql
 sudo chmod 755 ./orestar_scrape/adjustUpdateDates.R
+sudo chmod 755 ./orestar_scrape/checkFilesForDlLimit.R
+sudo chmod 666 ./orestar_scrape/problemSpreadsheets/errorLog.txt
 #core raw database files
 sudo cp -vu ./.Rprofile ~/.Rprofile
 sudo cp -vu ./trimTransactionsTable.sql ~/data_infrastructure/trimTransactionsTable.sql
