@@ -42,12 +42,146 @@ ERRORLOGFILENAME="affiliationScrapeErrorlog.txt"
 # endDate="10/30/2014"
 # neededIds = c(17040, 17044, 17015, 17007)
 
+perCommitteeUpdater<-function(dbname, tranTableName="raw_committee_transactions"){
+	# -get ids for committees to update
+	ids = selectIdsToDownload(dbname=dbname)
+
+	for(id in ids){
+		# --committee table:
+		# 	-scrape the ids/committee table
+		comtab = getCommitteeData(comids=id, 
+															dbname=dbname, 
+															rawCommitteeDataFolder="raw_committee_data", 
+															rawScrapeComTabName="raw_committees_scraped")
+		# 	-perform database update
+		updateCommitteeTable(comtab=comtab, 
+												dbname=dbname, 
+												rawScrapeComTabName=rawScrapeComTabName, 
+												appendTo=F)
+		# --transactions table:
+		
+		endDate = Sys.Date()
+		startDate = endDate - 40
+		# 	-scrape transactions by committee id.
+		dateRangeIdControler(neededIds=id, 
+												 tranTableName=tranTableName, 
+												 startDate=startDate, 
+												 endDate=endDate, 
+												 dbname=dbname, 
+												 workingComTabName=workingComTabName)
+	}
+
+}
+
+selectIdsToDownload<-function(dbname){
+	ids = c()
+	
+	cat("\nCollecting these IDs:\n")
+	#	1) records recently searched
+	#			look in the dblogs: this endpoint: http://54.213.83.132/hackoregon/http/searches/_/
+	#													this column:	committee_id
+	#													over the past month of searches take the unique set of committee ids
+	recentIdsSearchedQuerry = 'select committee_id from access_log where date > current_date - interval \'2 months\';'
+	recentIdsRes = dbiRead(query=recentIdsSearchedQuerry, dbname=dbname)
+	recentIds = unique(recentIdsRes[,"committee_id"])
+	cat("\n",length(recentIds),"IDs recently searched..\n")
+	
+	# 2) active committees
+	# 	recent transaction filers
+	# 	recent transaction payees/recipients
+	recentFilersQuerry = 'select filer_id, contributor_payee_committee_id from working_transactions
+												where filed_date > current_date - interval \'3 months\' order by filed_date;'
+	recentFilersRes = dbiRead(query=recentFilersQuerry, dbname=dbname)
+	recentFilersIds = unique(c(recentFilersRes$filer_id, recentFilersRes$contributor_payee_committee_id))
+	recentFilersIds = recentFilersIds[!is.na(recentFilersIds)]
+	
+	cat("\n",length(recentFilersIds),"IDs active in last 3 months, not recently searched..\n")
+	
+	# 3) top 100 oldest records in campaign cycle
+	# update oldest in and out of campaign cycle
+	# first get ids from the current cycle
+	idsInCycleQuerry = "SELECT DISTINCT filer_id FROM cc_working_transactions;"
+	idsInCycle = dbiRead(query=idsInCycleQuerry, dbname=dbname)[,1]
+	
+	participantsInCycleQuerry = "SELECT DISTINCT contributor_payee_committee_id FROM cc_working_transactions;"
+	participantsInCycle = dbiRead(query=participantsInCycleQuerry, dbname=dbname)
+	participantsInCycle = participantsInCycle[!is.na(participantsInCycle),1]
+	
+	allInCycle = unique(c(participantsInCycle, idsInCycle))
+	
+	# next extract those ids already to be searched by parts 1 and 2 above
+	allInCycleNotYetInList = setdiff(allInCycle, c(recentFilersIds, recentIds))
+	
+	# now pull out the top 100 oldest records from the current cycle
+	oldestQuerry = "SELECT id, MAX(scrape_date) AS sdate
+									FROM import_dates 
+									GROUP BY id 
+									ORDER BY sdate asc"
+	iDates = dbiRead(query=oldestQuerry, dbname=dbname)
+	
+	oldestInCycle = iDates[iDates$id%in%allInCycleNotYetInList,]
+	oldestInCycle = oldestInCycle[1:min(nrow(oldestInCycle),100),]
+ 	oldest100IdsInCycle = oldestInCycle$id
+	cat("\n",length(oldest100IdsInCycle),"IDs active in current cycle, least recently updated\n")
+	
+	# 4) top 50 oldest records, not yet found in campaign cycle
+	
+	allCyclesQuerry = "SELECT distinct filer_id FROM working_transactions;"
+	allCyclesFilerIds = dbiRead(query=allCyclesQuerry, dbname=dbname)
+	
+	allCyclesParticipantsQuerry = "SELECT distinct contributor_payee_committee_id FROM working_transactions;"
+	allCyclesParticipants = dbiRead(query=allCyclesParticipantsQuerry, dbname=dbname)
+
+	allCyclesIds = unique(c(allCyclesParticipants[,1], allCyclesFilerIds[,1]))
+	allCyclesIds = allCyclesIds[!is.na(allCyclesIds)]
+	
+	notInCycle = setdiff(x=allCyclesIds, y=allInCycle)
+	oldestNotInCycle = iDates[iDates$id%in%notInCycle,]
+	
+	notInCycle20oldest = oldestNotInCycle[1:min(20, nrow(oldestNotInCycle)),"id"]
+	
+	cat("\n",length(notInCycle20oldest),"IDs not active in current cycle, least recently updated\n")
+	
+	ids = c(recentIds,recentFilersIds,oldest100IdsInCycle,notInCycle20oldest)
+	# select from import_dates
+	return(ids)
+}#selectIdsToDownload
+
+updateCommitteeTable<-function(comtab, dbname, rawScrapeComTabName="raw_committees_scraped", appendTo=T){
+	
+	cat("\nPreping scraped committee data for entry into database.\n")
+	comtab = prepCommitteeTableData(comtab=comtab)
+	cat("\nRemoving old records")
+	oldcomtab = dbiRead(query=paste("select * from",rawScrapeComTabName), dbname=dbname)
+	oldreduced = oldcomtab[oldcomtab$id%in%comtab$id,]
+	updatedtab = rbind.data.frame(oldreduced, comtab)
+	
+	cat("\nUploading committee data from scraping to the database,",dbname,"\n")
+	writeCommitteeDataToDatabase(comtab=comtab, 
+															 rawScrapeComTabName=rawScrapeComTabName, 
+															 dbname=dbname, 
+															 appendTo=appendTo)
+	cat("\ncommittee data uploaded\n")
+	
+	readline("add functionality to updated the committee import log (where/how is it currently updated?)")
+	
+}
+
+getCommitteeData<-function(comids, dbname, rawCommitteeDataFolder="raw_committee_data", rawScrapeComTabName="raw_committees_scraped"){
+	scrapeTheseCommittees(committeeNumbers=comids, commfold=rawCommitteeDataFolder)
+	logWarnings(warnings())
+	rectab = rawScrapeToTable(committeeNumbers=comids, rawdir=rawCommitteeDataFolder)
+	return(rectab)
+}
+
+
+
 dateRangeIdControler<-function(neededIds,
 															 tranTableName="raw_committee_transactions", 
-														 startDate=NULL, 
-														 endDate=NULL, 
-														 dbname="hackoregon", 
-														 workingComTabName="working_committees"){
+															 startDate=NULL, 
+															 endDate=NULL, 
+															 dbname="hackoregon", 
+															 workingComTabName="working_committees"){
 	
 	DBNAME=dbname #a check for the DBNAME artifact
 	
