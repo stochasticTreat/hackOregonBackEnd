@@ -3,7 +3,7 @@ cat("\nInside reScrapeAllCommittees.R\nThis script will attempt to (re)download 
 source("./finDataImport.R")
 source("./dbi.R")
 source("./scrapeAffiliation.R")
-DBNAME="hack_oregon"
+dbname="hackoregon"
 ERRORLOGFILENAME="affiliationScrapeErrorlog.txt"
 source('./runIdScraper.R')
 
@@ -40,3 +40,5 @@ updateCommitteeTable(comtab=comtab,
 										 dbname=dbname, 
 										 rawScrapeComTabName=rawScrapeComTabName, 
 										 appendTo=F)
+
+
