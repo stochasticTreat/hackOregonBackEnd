@@ -3,7 +3,7 @@ cat("\nRunning bulkLoadScrapedCommitteeData.R\n",
 		"from working directory:\n",
 		getwd(),"\n")
 
-setwd("~/data_infrastructre/orestar_scrape/")
+setwd("~/data_infrastructure/orestar_scrape/")
 source('./runScraper.R')
 dbname="hackoregon"
 # dbname = "hack_oregon"
