@@ -14,7 +14,7 @@ bulkLoadScrapedCommitteeData(committeefolder="raw_committee_data",
 cat("\n..\n")
 
 cat("\nUpdating committee data import dates\n")
-system(command="sudo adjustUpdateCommitteeScrapeDates.R")
+system(command="sudo ./adjustUpdateCommitteeScrapeDates.R")
 
 cat("\nLogging db status\n")
 system(command="sudo ~/hackOregonDbStatusLogger.R bulkLoadScrapedCommitteeData.R")
