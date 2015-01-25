@@ -41,4 +41,4 @@ updateCommitteeTable(comtab=comtab,
 										 rawScrapeComTabName=rawScrapeComTabName, 
 										 appendTo=F)
 
-
+system(command="sudo adjustUpdateCommitteeScrapeDates.R")

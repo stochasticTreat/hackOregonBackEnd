@@ -1,3 +1,4 @@
+# these functions look in originalXLSdocs for transactions files (.xls)
 
 # dbname="hack_oregon"
 noteScrapedCommittees<-function(folderName="./originalXLSdocs/", dbname="hackoregon"){
@@ -22,5 +23,6 @@ getScrapedIds<-function(folderName="./originalXLSdocs/"){
 	
 	return(ids)
 }
+
 
 

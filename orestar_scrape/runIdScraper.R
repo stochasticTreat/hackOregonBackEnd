@@ -481,6 +481,12 @@ getIdFromFileName<-function(fname="./transConvertedToTsv/275_10-30-2014_01-01-20
 	return(id)
 }
 
+getIdFromCommitteeScrapeFileName<-function(fname= "97.txt"){
+	fname = basename(fname)
+	id = as.numeric(gsub(pattern="[.](txt|tsv)", replacement="", x=fname))
+	return(id)
+}
+
 getAdditionalRecordsWithIds<-function(fname, oldestRec, id){
 	
 	cat("\nAttempting to get remaining records in the date range that should be found in the file named\n",fname,"\n")
