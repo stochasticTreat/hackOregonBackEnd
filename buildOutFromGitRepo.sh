@@ -42,7 +42,7 @@ sudo chmod 755 ./endpoints/add_contributor_payee_class_column.sql
 sudo chmod 755 ./orestar_scrape/adjustUpdateDates.R
 sudo chmod 755 ./orestar_scrape/checkFilesForDlLimit.R
 sudo chmod 666 ./orestar_scrape/problemSpreadsheets/errorLog.txt
-sudo chmod 755 .orestar_scrape/adjustUpdateCommitteeScrapeDates.R
+sudo chmod 755 ./orestar_scrape/adjustUpdateCommitteeScrapeDates.R
 
 
 #core raw database files
